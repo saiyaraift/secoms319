@@ -1,0 +1,58 @@
+{
+    "products" : [
+        {
+            "productid": "0",  
+            "name": "Bee", 
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "1",  
+            "name": "Book Cover - Blue",
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "2",
+            "name": "Book Cover - Brown",  
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "3",
+            "name": "Corgi",  
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "4",
+            "name": "Flower",  
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "5",
+            "name": "Frog With Mushroom",  
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "6",
+            "name": "Tank Top",  
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "7",
+            "name": "Christmas Tree Ornament",  
+            "description": "Description", 
+            "price": "$20"
+        }, 
+        {
+            "productid": "8",
+            "name": "White Dinosaur",  
+            "description": "Description", 
+            "price": "$20"
+        }
+    ]
+}
