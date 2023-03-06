@@ -35,7 +35,8 @@ function dataToHTML(data) {
           <img src="${img}" alt="crochet product>
             <div class="card-body">
               <h3>${name}</h3>
-            <p class="card-text">Short Bio/price? </p>
+            <p class="card-text">${description}</p>
+            <p class="card-text">Price: ${price}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Favorite</button>

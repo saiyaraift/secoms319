@@ -3,63 +3,63 @@
         {
             "productid": "0",  
             "name": "Bee", 
-            "description": "Description", 
+            "description": "Smiling bee with wings.", 
             "price": "$20", 
             "img": "./images/bee_side2.jpg"
         }, 
         {
             "productid": "1",  
             "name": "Book Cover - Blue",
-            "description": "Description", 
-            "price": "$20", 
+            "description": "Blue book cover to hold small-medium sized books. Features a button to clasp shut.", 
+            "price": "$30", 
             "img" : "./images/book_cover_blue.jpg"
         }, 
         {
             "productid": "2",
             "name": "Book Cover - Brown",  
-            "description": "Description", 
-            "price": "$20", 
+            "description": "Brown book cover to hold small-medium sized books. Features a button to clasp shut.", 
+            "price": "$30", 
             "img" : "./images/book_cover_brown.jpg"
         }, 
         {
             "productid": "3",
             "name": "Corgi",  
-            "description": "Description", 
+            "description": "Cute corgi plushie.", 
             "price": "$20", 
             "img" : "./images/corgi_front.jpg"
         }, 
         {
             "productid": "4",
-            "name": "Flower",  
-            "description": "Description", 
-            "price": "$20", 
+            "name": "Flower Coaster",  
+            "description": "Flower to use as a coaster to prevent staining of furniture.", 
+            "price": "$15", 
             "img" : "./images/flower.jpg"
         }, 
         {
             "productid": "5",
             "name": "Frog With Mushroom",  
-            "description": "Description", 
+            "description": "Cute frog holding a mushroom friend.", 
             "price": "$20", 
             "img" : "./images/frog_mush_front.jpg"
         }, 
         {
             "productid": "6",
-            "name": "Tank Top",  
-            "description": "Description", 
-            "price": "$20", 
+            "name": "Crochet Top",  
+            "description": "Crochet tank top that has a corset back, which can be adjusted, along with adjustable neck ties.", 
+            "price": "$35", 
             "img" : "./images/tank_front.jpg"
         }, 
         {
             "productid": "7",
             "name": "Christmas Tree Ornament",  
-            "description": "Description", 
-            "price": "$20", 
+            "description": "Small tree ornament that can be customized to feature a word or name.", 
+            "price": "$15", 
             "img" : "./images/tree1.jpg"
         }, 
         {
             "productid": "8",
             "name": "White Dinosaur",  
-            "description": "Description", 
+            "description": "Dinosaur plushie that can sit on any shelf or table.", 
             "price": "$20", 
             "img" : "./images/white_dino_front.jpg"
         }
