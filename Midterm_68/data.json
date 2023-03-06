@@ -4,55 +4,64 @@
             "productid": "0",  
             "name": "Bee", 
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img": "./images/bee_side2.jpg"
         }, 
         {
             "productid": "1",  
             "name": "Book Cover - Blue",
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/book_cover_blue.jpg"
         }, 
         {
             "productid": "2",
             "name": "Book Cover - Brown",  
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/book_cover_brown.jpg"
         }, 
         {
             "productid": "3",
             "name": "Corgi",  
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/corgi_front.jpg"
         }, 
         {
             "productid": "4",
             "name": "Flower",  
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/flower.jpg"
         }, 
         {
             "productid": "5",
             "name": "Frog With Mushroom",  
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/frog_mush_front.jpg"
         }, 
         {
             "productid": "6",
             "name": "Tank Top",  
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/tank_front.jpg"
         }, 
         {
             "productid": "7",
             "name": "Christmas Tree Ornament",  
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/tree1.jpg"
         }, 
         {
             "productid": "8",
             "name": "White Dinosaur",  
             "description": "Description", 
-            "price": "$20"
+            "price": "$20", 
+            "img" : "./images/white_dino_front.jpg"
         }
     ]
 }
