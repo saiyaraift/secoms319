@@ -1,20 +1,21 @@
 fetch("data.json")
-.then(response => response.json())
-.then(data => dataToHTML(data));
+    .then(response => response.json())
+    .then(data => dataToHTML(data));
 
 function dataToHTML(data) {
-    let mainContainer = document.getElementById("productList"); 
-    console.log(mainContainer); 
+    let mainContainer = document.getElementById("favoriteList");
+    console.log(mainContainer);
     for (let i = 0; i < data.products.length; i++) {
-        let name = data.products[i].name; 
-        let description = data.products[i].description; 
-        let price = data.products[i].price; 
-        let img = data.products[i].img; 
-        console.log(name + " " + description + " " + price); 
+        if (i % 3 == 0) {
+            let name = data.products[i].name;
+            let description = data.products[i].description;
+            let price = data.products[i].price;
+            let img = data.products[i].img;
+            console.log(name + " " + description + " " + price);
 
-        let box = document.createElement("div");
-        console.log(box);
-        box.innerHTML = `<div class="col">
+            let box = document.createElement("div");
+            console.log(box);
+            box.innerHTML = `<div class="col">
         <div class="card shadow-sm">
           <img src="${img}" alt="crochet product>
             <div class="card-body">
@@ -31,8 +32,9 @@ function dataToHTML(data) {
           </div>
         </div>
       </div>`;
-        console.log(box);
-        mainContainer.appendChild(box); 
+            console.log(box);
+            mainContainer.appendChild(box);
+        }
     }
 }
 
