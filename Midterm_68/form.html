@@ -295,8 +295,9 @@ crossorigin="anonymous"></script>
   <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <!--Where shoud I have this data saving to-->
-      <form action="https://formbold.com/s/FORM_ID" method="POST">
 
+      <form action="https://formbold.com/s/FORM_ID" method="POST">
+        <h2>Custom Product</h2>
         <div class="formbold-input-radio-wrapper">
             <label for="item" class="formbold-form-label"> Item </label>
 
@@ -311,7 +312,7 @@ crossorigin="anonymous"></script>
 
               <div class="formbold-radio-group">
                 <label class="formbold-radio-label">
-                  <input class="formbold-input-radio" type="radio" name="item" id="item">
+                  <input class="formbold-input-radio" type="radio" name="item`" id="item">
                   Ornament
                   <span class="formbold-radio-checkmark"></span>
                 </label>
@@ -319,7 +320,7 @@ crossorigin="anonymous"></script>
 
               <div class="formbold-radio-group">
                 <label class="formbold-radio-label">
-                  <input class="formbold-input-radio" type="radio" name="jobtitle" id="jobtitle">
+                  <input class="formbold-input-radio" type="radio" name="item" id="item">
                     Animal
                   <span class="formbold-radio-checkmark"></span>
                 </label>
@@ -327,7 +328,7 @@ crossorigin="anonymous"></script>
 
               <div class="formbold-radio-group">
                 <label class="formbold-radio-label">
-                  <input class="formbold-input-radio" type="radio" name="jobtitle" id="jobtitle">
+                  <input class="formbold-input-radio" type="radio" name="item" id="item">
                   Coaster
                   <span class="formbold-radio-checkmark"></span>
                 </label>
@@ -338,12 +339,12 @@ crossorigin="anonymous"></script>
      
   
           <div class="formbold-input-radio-wrapper">
-              <label for="jobtitle" class="formbold-form-label"> Size </label>
+              <label for="size" class="formbold-form-label"> Size </label>
   
               <div class="formbold-radio-flex">
                 <div class="formbold-radio-group">
                   <label class="formbold-radio-label">
-                    <input class="formbold-input-radio" type="radio" name="jobtitle" id="jobtitle">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
                     micro (1-2in)
                     <span class="formbold-radio-checkmark"></span>
                   </label>
@@ -351,7 +352,7 @@ crossorigin="anonymous"></script>
   
                 <div class="formbold-radio-group">
                   <label class="formbold-radio-label">
-                    <input class="formbold-input-radio" type="radio" name="jobtitle" id="jobtitle">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
                     small (2-3in)
                     <span class="formbold-radio-checkmark"></span>
                   </label>
@@ -359,7 +360,7 @@ crossorigin="anonymous"></script>
   
                 <div class="formbold-radio-group">
                   <label class="formbold-radio-label">
-                    <input class="formbold-input-radio" type="radio" name="jobtitle" id="jobtitle">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
                     regular (4-7in)
                     <span class="formbold-radio-checkmark"></span>
                   </label>
@@ -367,7 +368,7 @@ crossorigin="anonymous"></script>
   
                 <div class="formbold-radio-group">
                   <label class="formbold-radio-label">
-                    <input class="formbold-input-radio" type="radio" name="jobtitle" id="jobtitle">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
                     large (8-12in)
                     <span class="formbold-radio-checkmark"></span>
                   </label>
@@ -385,6 +386,7 @@ crossorigin="anonymous"></script>
               ></textarea>
           </div>
 
+          <h2>Order Information</h2>
           <div class="formbold-input-flex">
             <div>
                 <label for="firstname" class="formbold-form-label"> First name </label>
@@ -428,6 +430,7 @@ crossorigin="anonymous"></script>
           </div>
 
           
+          
           <div class="formbold-input-flex">
             <div>
                 <label for="address" class="formbold-form-label">
@@ -443,7 +446,7 @@ crossorigin="anonymous"></script>
         
               <div>
                 <label for="address2" class="formbold-form-label">
-                  Street Address Line 2
+                  City
                 </label>
                 <input
                   type="text"
@@ -466,7 +469,7 @@ crossorigin="anonymous"></script>
       
             <div class="formbold-input-flex">
               <div>
-                <label for="post" class="formbold-form-label"> Post/Zip code </label>
+                <label for="post" class="formbold-form-label"> Zip Code </label>
                 <input
                   type="text"
                   name="post"
@@ -475,7 +478,7 @@ crossorigin="anonymous"></script>
                 />
               </div>
               <div>
-                <label for="area" class="formbold-form-label"> Area Code </label>
+                <label for="area" class="formbold-form-label"> Apt./Suite No. </label>
                 <input
                   type="text"
                   name="area"
