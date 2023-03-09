@@ -13,16 +13,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 crossorigin="anonymous"></script>
+<script src="form.js"></script>
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
     <style>
-
-      
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   * {
@@ -308,7 +306,7 @@ crossorigin="anonymous"></script>
     <div class="formbold-form-wrapper">
         <!--Where shoud I have this data saving to-->
 
-      <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <form method="POST" name="formSub">
         <h2>Custom Product</h2>
         <div class="formbold-input-radio-wrapper">
             <label for="item" class="formbold-form-label"> Item </label>
@@ -500,7 +498,7 @@ crossorigin="anonymous"></script>
               </div>
           </div>
   
-          <button class="formbold-btn">
+          <button onClick="submitted()" class="formbold-btn" name="subButton">
               Submit
           </button>
       </form>
