@@ -63,5 +63,28 @@
             "price": "$20", 
             "img" : "./images/white_dino_front.jpg"
         }
+    ], 
+    "upcoming" : [
+        {
+            "productid": "a",  
+            "name": "Butterfly Shoulder Bag", 
+            "description": "Perfect shoulder bag to take out for any daytime or nighttime activites. Features cute butterflies, and can be color customizable.", 
+            "price": "$45", 
+            "img": "./images/butterfly_shoulder_bag.jpg"
+        }, 
+        {
+            "productid": "b",  
+            "name": "Fingerless Heart Gloves",
+            "description": "These fingerless heart gloves are perfect for any outfit. They will keep your hands nice and toasty in any cold day.", 
+            "price": "$30", 
+            "img" : "./images/fingerless_heart_gloves.jpg"
+        }, 
+        {
+            "productid": "c",
+            "name": "Rainbow Sweater",  
+            "description": "This rainbow sweater is one of my newest creations. You will find that this rainbow sweater is soft, warm, and cozy. ", 
+            "price": "$60", 
+            "img" : "./images/rainbow_sweater.webp"
+        }
     ]
 }

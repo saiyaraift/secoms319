@@ -5,12 +5,11 @@ fetch("data.json")
 function dataToHTML(data) {
     let mainContainer = document.getElementById("favoriteList");
     console.log(mainContainer);
-    for (let i = 0; i < data.products.length; i++) {
-        if (i % 3 == 0) {
-            let name = data.products[i].name;
-            let description = data.products[i].description;
-            let price = data.products[i].price;
-            let img = data.products[i].img;
+    for (let i = 0; i < data.upcoming.length; i++) {
+            let name = data.upcoming[i].name;
+            let description = data.upcoming[i].description;
+            let price = data.upcoming[i].price;
+            let img = data.upcoming[i].img;
             console.log(name + " " + description + " " + price);
 
             let box = document.createElement("div");
@@ -19,9 +18,9 @@ function dataToHTML(data) {
         <div class="card shadow-sm">
           <img src="${img}" alt="crochet product>
             <div class="card-body">
-              <h3>${name}</h3>
+            <h3>${name}</h3>
+            <h5>Price: ${price}</h5>
             <p class="card-text">${description}</p>
-            <p class="card-text">Price: ${price}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Favorite</button>
@@ -34,7 +33,7 @@ function dataToHTML(data) {
       </div>`;
             console.log(box);
             mainContainer.appendChild(box);
-        }
+        
     }
 }
 
