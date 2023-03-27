@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>Crochet</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+crossorigin="anonymous"></script>
+<script src="form.js"></script>
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Inter", sans-serif;
+   
+  }
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+
+
+  #cat{
+  height: 400px;
+  width:100% ;
+  object-fit:cover;
+  }
+
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 550px;
+    width: 100%;
+    background: white;
+  }
+
+  .formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  .formbold-input-flex > div {
+    width: 50%;
+  }
+
+  .formbold-input-radio-wrapper {
+    margin-bottom: 28px;
+  }
+  .formbold-radio-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .formbold-radio-label {
+    font-size: 14px;
+    line-height: 24px;
+    color: #07074D;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .formbold-input-radio {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .formbold-radio-checkmark {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE3EC;
+    border-radius: 50%;
+  }
+  .formbold-radio-label .formbold-input-radio:checked ~ .formbold-radio-checkmark {
+    background-color: #6A64F1;
+  }
+  .formbold-radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .formbold-radio-label .formbold-input-radio:checked ~ .formbold-radio-checkmark:after {
+    display: block;
+  }
+
+  .formbold-radio-label .formbold-radio-checkmark:after {
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    transform: translate(-50%, -50%);
+  }
+
+  .formbold-form-input {
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #DDE3EC;
+    background: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    color: #07074D;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input::placeholder {
+    color: #536387;
+  }
+  .formbold-form-input:focus {
+    border-color: #6a64f1;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .formbold-form-label {
+    color: #07074D;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .formbold-btn {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #6A64F1;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-bar{
+        background-color: palevioletred;
+        margin: 5px;
+        padding: 3px;
+      }
+
+      
+
+    </style>
+    
+  </head>
+  <body>
+    
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white"></h4>
+          <p class="text-muted"></p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+        <strong>Home</strong>
+      </a>
+
+      <a href="products.html" class="navbar-brand d-flex align-items-center">
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+        <strong>Products</strong>
+      </a>
+
+      <a href="form.html" class="navbar-brand d-flex align-items-center">
+       <!--<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+        <strong>Custom Order</strong>
+      </a>
+
+      <a href="creatorbio.html" class="navbar-brand d-flex align-items-center">
+       <!--<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+        <strong>About</strong>
+      </a>
+
+      <a href="favorites.html" class="navbar-brand d-flex align-items-center">
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+         <strong>Upcoming</strong>
+       </a>
+
+       <a href="authors.html" class="navbar-brand d-flex align-items-center">
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+         <strong>Authors</strong>
+       </a>
+      
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+<!--<p> Author: Saiyara Iftekharuzzaman & Jade Seiler
+    ISU Netid : saiyara@iastate.edu & jcseiler@iastate.edu
+    Date : February 12th, 2023</p>-->
+
+    <img id="cat" src="images/banner.png" alt="banner">
+   
+    </section>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Custom Order Request</h1>
+        <p class="lead text-muted">After recieving your request I will contact you via email to discuss pricing and get payment information</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <!--Where shoud I have this data saving to-->
+
+      <form action = "mailto:saiyara@iastate.edu" method="POST" name="formSub">
+        <h2>Custom Product</h2>
+        <div class="formbold-input-radio-wrapper">
+            <label for="item" class="formbold-form-label"> Item </label>
+
+            <div class="formbold-radio-flex">
+              <div class="formbold-radio-group">
+                <label class="formbold-radio-label">
+                  <input class="formbold-input-radio" type="radio" name="item" id="item">
+                  Book cover
+                  <span class="formbold-radio-checkmark"></span>
+                </label>
+              </div>
+
+              <div class="formbold-radio-group">
+                <label class="formbold-radio-label">
+                  <input class="formbold-input-radio" type="radio" name="item`" id="item">
+                  Ornament
+                  <span class="formbold-radio-checkmark"></span>
+                </label>
+              </div>
+
+              <div class="formbold-radio-group">
+                <label class="formbold-radio-label">
+                  <input class="formbold-input-radio" type="radio" name="item" id="item">
+                    Animal
+                  <span class="formbold-radio-checkmark"></span>
+                </label>
+              </div>
+
+              <div class="formbold-radio-group">
+                <label class="formbold-radio-label">
+                  <input class="formbold-input-radio" type="radio" name="item" id="item">
+                  Coaster
+                  <span class="formbold-radio-checkmark"></span>
+                </label>
+              </div>
+            </div>
+        </div>
+
+     
+  
+          <div class="formbold-input-radio-wrapper">
+              <label for="size" class="formbold-form-label"> Size </label>
+  
+              <div class="formbold-radio-flex">
+                <div class="formbold-radio-group">
+                  <label class="formbold-radio-label">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
+                    micro (1-2in)
+                    <span class="formbold-radio-checkmark"></span>
+                  </label>
+                </div>
+  
+                <div class="formbold-radio-group">
+                  <label class="formbold-radio-label">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
+                    small (2-3in)
+                    <span class="formbold-radio-checkmark"></span>
+                  </label>
+                </div>
+  
+                <div class="formbold-radio-group">
+                  <label class="formbold-radio-label">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
+                    regular (4-7in)
+                    <span class="formbold-radio-checkmark"></span>
+                  </label>
+                </div>
+  
+                <div class="formbold-radio-group">
+                  <label class="formbold-radio-label">
+                    <input class="formbold-input-radio" type="radio" name="size" id="size">
+                    large (8-12in)
+                    <span class="formbold-radio-checkmark"></span>
+                  </label>
+                </div>
+              </div>
+          </div>
+  
+          <div>
+              <label for="message" class="formbold-form-label">Specifications (inlcude colors) </label>
+              <textarea
+                  rows="6"
+                  name="message"
+                  id="message"
+                  class="formbold-form-input"
+              ></textarea>
+          </div>
+
+          <h2>Order Information</h2>
+          <div class="formbold-input-flex">
+            <div>
+                <label for="firstname" class="formbold-form-label"> First name </label>
+                <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                class="formbold-form-input"
+                />
+            </div>
+            <div>
+                <label for="lastname" class="formbold-form-label"> Last name </label>
+                <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                class="formbold-form-input"
+                />
+            </div>
+          </div>
+  
+          <div class="formbold-input-flex">
+            <div>
+                <label for="email" class="formbold-form-label"> Email </label>
+                <input
+                type="email"
+                name="email"
+                id="email"
+                class="formbold-form-input"
+                />
+            </div>
+            <div>
+                <label for="phone" class="formbold-form-label"> Phone </label>
+                <input
+                type="text"
+                name="phone"
+                id="phone"
+                class="formbold-form-input"
+                />
+            </div>
+          </div>
+
+          
+          
+          <div class="formbold-input-flex">
+            <div>
+                <label for="address" class="formbold-form-label">
+                  Street Address
+                </label>
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  class="formbold-form-input"
+                />
+              </div>
+        
+              <div>
+                <label for="address2" class="formbold-form-label">
+                  City
+                </label>
+                <input
+                  type="text"
+                  name="address2"
+                  id="address2"
+                  class="formbold-form-input"
+                />
+              </div>
+
+              <div>
+                <label for="country" class="formbold-form-label"> Country </label>
+                <input
+                  type="text"
+                  name="country"
+                  id="country"
+                  class="formbold-form-input"
+                />
+              </div>
+            </div>
+      
+            <div class="formbold-input-flex">
+              <div>
+                <label for="post" class="formbold-form-label"> Zip Code </label>
+                <input
+                  type="text"
+                  name="post"
+                  id="post"
+                  class="formbold-form-input"
+                />
+              </div>
+              <div>
+                <label for="area" class="formbold-form-label"> Apt./Suite No. </label>
+                <input
+                  type="text"
+                  name="area"
+                  id="area"
+                  class="formbold-form-input"
+                />
+              </div>
+          </div>
+  
+          <button onClick="submitted()" class="formbold-btn" name="subButton">
+              Submit
+          </button>
+      </form>
+    </div>
+  </div>
+ 
+
+
+
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">Thank you for visiting!</p>
+    <p class="mb-0">Saiyara Iftekharuzzaman & Jade Seiler.</p>
+   
+
+  </div>
+</footer>
+<img id="cat" src="images/flowerline.png" alt="banner">
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>

@@ -1,0 +1,90 @@
+{
+    "products" : [
+        {
+            "productid": "0",  
+            "name": "Bee", 
+            "description": "This smiling, little creature is perfect for any bee lover out there.", 
+            "price": "$20", 
+            "img": "./images/bee_side2.jpg"
+        }, 
+        {
+            "productid": "1",  
+            "name": "Book Cover - Blue",
+            "description": "This blue book cover can hold medium-large sized books. It features a button to clasp shut and keep the books contained.", 
+            "price": "$30", 
+            "img" : "./images/book_cover_blue.jpg"
+        }, 
+        {
+            "productid": "2",
+            "name": "Book Cover - Brown",  
+            "description": "The brown book cover can contain any small-medium sized books. It's also perfect for small journals! The front features a button to clasp the cover shut.", 
+            "price": "$30", 
+            "img" : "./images/book_cover_brown.jpg"
+        }, 
+        {
+            "productid": "3",
+            "name": "Corgi",  
+            "description": "A cute corgi plushie is great for anyone who loves dogs, especially corgi lovers!", 
+            "price": "$20", 
+            "img" : "./images/corgi_front.jpg"
+        }, 
+        {
+            "productid": "4",
+            "name": "Flower Coaster",  
+            "description": "My flower coaster is perfect to prevent staining of furniture, and is also a cute decor item to pin up or place on any surface.", 
+            "price": "$15", 
+            "img" : "./images/flower.jpg"
+        }, 
+        {
+            "productid": "5",
+            "name": "Frog With Mushroom",  
+            "description": "This piece features a cute frog holding a mushroom friend. I find this item is perfect for anyone who loves earthly creatures!", 
+            "price": "$20", 
+            "img" : "./images/frog_mush_front.jpg"
+        }, 
+        {
+            "productid": "6",
+            "name": "Crochet Top",  
+            "description": "Crochet tank top that has a corset back, which can be adjusted, along with adjustable neck ties. Great to wear in the summertime!", 
+            "price": "$35", 
+            "img" : "./images/tank_front.jpg"
+        }, 
+        {
+            "productid": "7",
+            "name": "Christmas Tree Ornament",  
+            "description": "For Christmas time, my small tree ornament is perfect to set on a Christmas tree. It can also be customized to feature a word or name.", 
+            "price": "$15", 
+            "img" : "./images/tree1.jpg"
+        }, 
+        {
+            "productid": "8",
+            "name": "White Dinosaur",  
+            "description": "My dinosaur plushie can sit on any shelf or table, and is great for any lover of prehistoric creatures.", 
+            "price": "$20", 
+            "img" : "./images/white_dino_front.jpg"
+        }
+    ], 
+    "upcoming" : [
+        {
+            "productid": "a",  
+            "name": "Butterfly Shoulder Bag", 
+            "description": "Perfect shoulder bag to take out for any daytime or nighttime activites. Features cute butterflies, and can be color customizable.", 
+            "price": "$45", 
+            "img": "./images/butterfly_shoulder_bag.jpg"
+        }, 
+        {
+            "productid": "b",  
+            "name": "Fingerless Heart Gloves",
+            "description": "These fingerless heart gloves are perfect for any outfit. They will keep your hands nice and toasty in any cold day.", 
+            "price": "$30", 
+            "img" : "./images/fingerless_heart_gloves.jpg"
+        }, 
+        {
+            "productid": "c",
+            "name": "Rainbow Sweater",  
+            "description": "This rainbow sweater is one of my newest creations. You will find that this rainbow sweater is soft, warm, and cozy. ", 
+            "price": "$60", 
+            "img" : "./images/rainbow_sweater.webp"
+        }
+    ]
+}
