@@ -40,20 +40,23 @@ export const App = () => {
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">Rating: {product.rating.rate}</p>
                 <p>{product.description}</p>
+
+                <div className="inline-flex">
+                  <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                    onClick={() => removeFromCart(product)}>
+                    -
+                  </button>
+                  <button type= "button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+                    onClick={() => addToCart(product)}>
+                    +
+                  </button>
+                </div>
+                <div>
+                  ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
+                </div> 
+
               </div>
               <p className="text-sm font-medium text-green-600">${product.price}</p>
-            </div>
-
-            <div class="row border-top border-bottom">
-              <div class="row main align-items-center">
-                <div class="col">
-                  <button type="button" variant="light" onClick={() => removeFromCart(product)} > - </button>{" "}
-                  <button type="button" variant="light" onClick={() => addToCart(product)}> + </button>
-                </div>
-                <div class="col">
-                  ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
-                </div>
-              </div>
             </div>
           </div>
         ))}
@@ -62,10 +65,12 @@ export const App = () => {
   }
 
   const addToCart = (product) => {
+    console.log("MADE IT WITH ADD BUTTON WITH THE PRODUCT" + {product})
     setCart([...cart, product]);
   };
 
   const removeFromCart = (product) => {
+    console.log("MADE IT WITH REMOVE BUTTON WITH THE PRODUCT" + {product})
     let hardCopy = [...cart];
     hardCopy = hardCopy.filter((cartItem) => cartItem.id !== product.id);
     setCart(hardCopy);
@@ -149,10 +154,8 @@ export const App = () => {
         {render_products(ProductsCategory)}
       </div>
     </div>
-
-    
   );
 }
-  
+
 
 export default App;
