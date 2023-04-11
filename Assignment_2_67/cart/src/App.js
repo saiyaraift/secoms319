@@ -115,18 +115,18 @@ export const App = () => {
 
   return (
     <div className="flex fixed flex-row">
-      <div className="h-screen bg-slate-800 p-3 xl:basis-1/5" style={{ minWidth: '65%' }}>
+      <div className="h-screen bg-red-300 p-3 xl:basis-1/5" style={{ minWidth: '65%' }}>
         <img className="w-full" src={logo} alt="Sunset in the mountains" />
         <div className="px-6 py-4">
           <h1 className="text-3xl mb-2 font-bold text-white"> STORE SE/ComS319 </h1>
           <p className="text-gray-700 text-white">
-            by - <b style={{ color: 'orange' }}>Jade Seiler & Saiyara Iftekharuzzaman</b>
+            by - <b style={{ color: 'black' }}>Jade Seiler & Saiyara Iftekharuzzaman</b>
           </p>
           <div className="py-10">
             {(Categories) ? <p className='text-white'>Tags : </p> : ''}
             {
-              Categories.map(tag => <button key={tag} className="inline-block bg-amber-600 rounded-full px-3 py-1
-  text-sm font-semibold text-gray-700 mr-2 mt-2" 
+              Categories.map(tag => <button key={tag} className="inline-block bg-white rounded-full px-3 py-1
+  text-sm font-semibold text-black-700 mr-2 mt-2" 
   onClick={()=>{handleClick(tag)}}>{tag}</button>)
             }
           </div>
