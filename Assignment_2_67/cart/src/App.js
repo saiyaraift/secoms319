@@ -3,6 +3,7 @@ import "./App.css";
 import React, {useState, useEffect} from "react";
 import {Products} from "./Products"
 import {Categories} from "./Categories"
+import Shop from './Shop';
 
 export const App = () => {
   console.log("Step 1 : After reading file :");
@@ -77,13 +78,22 @@ export const App = () => {
   };
 
   const cartItems = cart.map((product) => (
-    <div key={product.id}>
-      <img class=
-        "img-fluid" src={product.image} width={30} />
-      {product.title}
-      ${product.price}
+    <div class="row border-top border-bottom" key={product.id}>
+    <div class="row main align-items-center">
+    <div class="col-2">
+    <img class="img-fluid" src={product.image} />
+    </div>
+    <div class="col">
+    <button type="button" variant="light" onClick={() => removeFromCart(product)} > - </button>{" "}
+    <button type="button" variant="light" onClick={() => addToCart(product)}> + </button>
+    </div>
+    <div class="col">
+    ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
+    </div>
+    </div>
     </div>
   ));
+
 
   useEffect(() => {
     total();
@@ -146,6 +156,14 @@ export const App = () => {
              />
           </div>
 
+          <div> 
+                  <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                    onClick={() => {console.log(cartItems)}}>
+                    cart
+                  </button>
+                  {cartItems}
+
+</div>
 
         </div>
       </div>
@@ -153,6 +171,7 @@ export const App = () => {
         {console.log("Before render :", Products.length, ProductsCategory.length)}
         {render_products(ProductsCategory)}
       </div>
+
     </div>
   );
 }
