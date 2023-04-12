@@ -77,22 +77,18 @@ export const App = () => {
     setCart(hardCopy);
   };
 
-  const cartItems = cart.map((product) => (
-    <div class="row border-top border-bottom" key={product.id}>
-    <div class="row main align-items-center">
-    <div class="col-2">
-    <img class="img-fluid" src={product.image} />
-    </div>
-    <div class="col">
-    <button type="button" variant="light" onClick={() => removeFromCart(product)} > - </button>{" "}
-    <button type="button" variant="light" onClick={() => addToCart(product)}> + </button>
-    </div>
-    <div class="col">
-    ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
-    </div>
-    </div>
-    </div>
-  ));
+  // const cartItems = cart.map((product) => (
+  //   <div className="row border-top border-bottom " key={product.id}>
+  //     <div className="row main align-items-center">
+  //       <div className="col-2">
+  //         <img className="img-fluid" src={product.image} />
+  //       </div>
+  //       <div className="col">
+  //         ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
+  //       </div>
+  //     </div>
+  //   </div>
+  // ));
 
 
   useEffect(() => {
@@ -159,13 +155,13 @@ export const App = () => {
             />
           </div>
 
-          <div>
+          {/* <div">
             <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
               onClick={() => { console.log(cartItems) }}>
               cart
             </button>
             {cartItems}
-          </div>
+          </div> */}
 
         </div>
       </div>
