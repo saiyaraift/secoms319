@@ -65,6 +65,39 @@ export const App = () => {
       <div className='left-div'>
       <button type="button" className="but" onClick={()=>openPaymentFormWindow()}>Check Out</button>
       </div>
+
+      <div id='div_c'>
+          <h3>Thank you for your purchase!</h3>
+      </div>
+
+      <div id='div_id'> 
+<form id="purchase-form">
+  <p>Final Total: ${cartTotal}</p>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required></input><br></br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required></input><br></br>
+
+  <label for="address">Address:</label>
+  <input type="text" id="address" name="address" required></input><br></br>
+
+  <label for="city">City:</label>
+  <input type="text" id="city" name="city" required></input><br></br>
+
+  <label for="state">State:</label>
+  <input type="text" id="state" name="state" required></input><br></br>
+
+  <label for="card-number">Card Number:</label>
+  <input type="text" id="card-number" name="card-number" required></input><br></br>
+  <label for="expiry-date">Expiry Date:</label>
+  <input type="text" id="expiry-date" name="expiry-date" required></input><br></br>
+  <label for="cvv">CVV:</label>
+  <input type="text" id="cvv" name="cvv" required></input><br></br>
+  <input type="submit"  className='but' value="Submit" onClick={()=>confirmation()}></input>
+  <input type="button" className='but'  value="Cancel" onClick={()=>closePaymentFormWindow()}></input>
+</form>
+</div>
     </div>
   }
 
@@ -112,42 +145,18 @@ export const App = () => {
   
   }
 
+  function confirmation(){
+    document.getElementById('div_id').style.visibility = 'hidden';
+    document.getElementById('div_c').style.visibility = 'visible';
+
+  }
+
  function openPaymentFormWindow() {
-  const width = 500;
-  const height = 600;
-  const left = (window.innerWidth / 2) - (width / 2);
-  const top = (window.innerHeight / 2) - (height / 2);
-  const paymentFormWindow = window.open("", "Payment Form", `width=${width}, height=${height}, left=${left}, top=${top}`);
-  paymentFormWindow.document.write(`
-  <form id="purchase-form">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required><br><br>
+  document.getElementById('div_id').style.visibility = 'visible';
+}
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required><br><br>
-
-  <label for="address">Address:</label>
-  <input type="text" id="address" name="address" required><br><br>
-
-  <label for="city">City:</label>
-  <input type="text" id="city" name="city" required><br><br>
-
-  <label for="state">State:</label>
-  <input type="text" id="state" name="state" required><br><br>
-
-  <label for="card-number">Card Number:</label>
-  <input type="text" id="card-number" name="card-number" required><br><br>
-
-  <label for="expiry-date">Expiry Date:</label>
-  <input type="text" id="expiry-date" name="expiry-date" required><br><br>
-
-  <label for="cvv">CVV:</label>
-  <input type="text" id="cvv" name="cvv" required><br><br>
-
-  <input type="submit"  value="Purchase">
-</form>
-
-  `);
+function closePaymentFormWindow() {
+  document.getElementById('div_id').style.visibility = 'hidden';
 }
 
   const handleChange = (e) => {
@@ -204,7 +213,9 @@ export const App = () => {
       <div className="ml-5 p-10 xl:basis-4/5">
         {render_products(ProductsCategory)}
       </div>
-    </div>
+
+
+</div>
   );
 }
 

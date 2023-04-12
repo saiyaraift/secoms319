@@ -73,4 +73,36 @@
 
 }
 
+#div_id {
+  /*height: 400px;*/
+  visibility:hidden;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  overflow: scroll;
+
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#div_c {
+  /*height: 400px;*/
+  visibility:hidden;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+
+}
+
+
 
