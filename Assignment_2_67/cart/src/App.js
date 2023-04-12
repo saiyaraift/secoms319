@@ -3,7 +3,7 @@ import "./App.css";
 import React, {useState, useEffect} from "react";
 import {Products} from "./Products"
 import {Categories} from "./Categories"
-import Shop from './Shop';
+// import Shop from './Shop';
 
 export const App = () => {
   console.log("Step 1 : After reading file :");
@@ -44,11 +44,11 @@ export const App = () => {
 
                 <div className="inline-flex">
                   <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-                    onClick={() => removeFromCart(product)}>
+                    onClick={() => removeFromCart(product, index)}>
                     -
                   </button>
                   <button type= "button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
-                    onClick={() => addToCart(product)}>
+                    onClick={() => addToCart(product, index)}>
                     +
                   </button>
                 </div>
@@ -65,12 +65,12 @@ export const App = () => {
     </div>
   }
 
-  const addToCart = (product) => {
+  const addToCart = (product, index) => {
     console.log("MADE IT WITH ADD BUTTON WITH THE PRODUCT" + {product})
     setCart([...cart, product]);
   };
 
-  const removeFromCart = (product) => {
+  const removeFromCart = (product, index) => {
     console.log("MADE IT WITH REMOVE BUTTON WITH THE PRODUCT" + {product})
     let hardCopy = [...cart];
     hardCopy = hardCopy.filter((cartItem) => cartItem.id !== product.id);
@@ -121,7 +121,7 @@ export const App = () => {
   const handleChange = (e) => {
     setQuery(e.target.value);
     console.log("Step 6 : in handleChange, Target Value :", e.target.value, " Query Value :", query);
-    const results = ProductsCategory.filter(eachProduct => {
+    const results = Products.filter(eachProduct => {
       if (e.target.value === "") return ProductsCategory;
       return eachProduct.title.toLowerCase().includes(e.target.value.toLowerCase())
     });
