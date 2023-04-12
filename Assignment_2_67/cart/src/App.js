@@ -22,7 +22,7 @@ export const App = () => {
       }}>
         {/* Loop Products */}
         {ProductsCategory.map((product, index) => (
-          <div key={index} className="group relative shadow-lg" >
+          <div key={index} className="group relative shadow-lg pointer-events-none" >
             <div className=" min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
               <img
                 alt="Product Image"
@@ -43,11 +43,11 @@ export const App = () => {
                 <p>{product.description}</p>
 
                 <div className="inline-flex">
-                  <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+                  <button type="button" className="bg-gray-300 group-hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer pointer-events-auto" 
                     onClick={() => removeFromCart(product, index)}>
                     -
                   </button>
-                  <button type= "button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+                  <button type= "button" className="bg-gray-300 group-hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer pointer-events-auto" 
                     onClick={() => addToCart(product, index)}>
                     +
                   </button>
@@ -144,29 +144,28 @@ export const App = () => {
             {(Categories) ? <p className='text-white'>Tags : </p> : ''}
             {
               Categories.map(tag => <button key={tag} className="inline-block bg-white rounded-full px-3 py-1
-  text-sm font-semibold text-black-700 mr-2 mt-2" 
-  onClick={()=>{handleClick(tag)}}>{tag}</button>)
+  text-sm font-semibold text-black-700 mr-2 mt-2"
+                onClick={() => { handleClick(tag) }}>{tag}</button>)
             }
           </div>
 
 
           <div className="py-10">
             <input type="search" value={query} onChange={handleChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
             focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
             dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
             dark:focus:ring-blue-500 dark:focus:border-blue-500"
-             />
+            />
           </div>
 
-          <div> 
-                  <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-                    onClick={() => {console.log(cartItems)}}>
-                    cart
-                  </button>
-                  {cartItems}
-
-</div>
+          <div>
+            <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+              onClick={() => { console.log(cartItems) }}>
+              cart
+            </button>
+            {cartItems}
+          </div>
 
         </div>
       </div>
