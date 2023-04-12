@@ -61,8 +61,10 @@ export const App = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div >
+      <div className='left-div'>
       <button type="button" className="but" onClick={()=>openPaymentFormWindow()}>Check Out</button>
+      </div>
     </div>
   }
 
@@ -147,47 +149,6 @@ export const App = () => {
 
   `);
 }
-
-// const purchaseForm = document.querySelector('#purchase-form');
-//   purchaseForm.addEventListener('submit', function(event) {
-//     event.preventDefault(); // prevent default form submission behavior
-    
-//     // get form field values
-//     const name = document.querySelector('#name').value;
-//     const email = document.querySelector('#email').value;
-//     const address = document.querySelector('#address').value;
-//     const city = document.querySelector('#city').value;
-//     const cardNumber = document.querySelector('#card-number').value;
-//     const expiryDate = document.querySelector('#expiry-date').value;
-//     const cvv = document.querySelector('#cvv').value;
-    
-//     // create JavaScript object with form field values
-//     const purchase = {
-//       name: name,
-//       email: email,
-//       address: address,
-//       city: city,
-//       cardNumber: cardNumber,
-//       expiryDate: expiryDate,
-//       cvv: cvv
-//     };
-    
-//     // convert JavaScript object to JSON string
-//     const purchaseJSON = JSON.stringify(purchase);
-    
-//     // write JSON string to file using fetch() method
-//     fetch('Form.json', {
-//       method: 'POST',
-//       body: purchaseJSON,
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     }).then(response => {
-//       console.log('Purchase submitted successfully');
-//     }).catch(error => {
-//       console.error('Error submitting purchase:', error);
-//     });
-//   });
 
   const handleChange = (e) => {
     setQuery(e.target.value);
