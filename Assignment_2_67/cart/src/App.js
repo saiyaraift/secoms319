@@ -79,59 +79,6 @@ export const App = () => {
     setCart(hardCopy);
   };
 
-  //  const render_cart = (cart) => {
-  //   return <div className='category-section fixed'>
-  //     <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">Cart ({cart.length})</h2>
-  //     <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10" style={{
-  //       maxHeight: '800px', overflowY:
-  //         'scroll'
-  //     }}>
-  //       {/* Loop Products */}
-  //       {cart.map((product, index) => (
-  //         <div key={index} className="group relative shadow-lg pointer-events-none" >
-  //           <div className=" min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
-  //             <img
-  //               alt="Product Image"
-  //               src={product.image}
-  //               className="w-full h-full object-center object-cover lg:w-full lg:h-full"
-  //             />
-  //           </div>
-  //           <div className="flex justify-between p-3">
-  //             <div>
-  //               <h3 className="text-sm text-gray-700">
-  //                 <a href={product.href}>
-  //                   <span aria-hidden="true" className="absolute inset-0" />
-  //                   <span style={{ fontSize: '16px', fontWeight: '600' }}>{product.title}</span>
-  //                 </a>
-  //                 <p>Tag - {product.category}</p>
-  //               </h3>
-  //               <p className="mt-1 text-sm text-gray-500">Rating: {product.rating.rate}</p>
-  //               <p>{product.description}</p>
-
-  //               <div className="inline-flex">
-  //                 <button type="button" className="bg-gray-300 group-hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer pointer-events-auto" 
-  //                   onClick={() => removeFromCart(product, index)}>
-  //                   -
-  //                 </button>
-  //                 <button type= "button" className="bg-gray-300 group-hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer pointer-events-auto" 
-  //                   onClick={() => addToCart(product, index)}>
-  //                   +
-  //                 </button>
-  //               </div>
-  //               <div>
-  //                 ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
-  //               </div> 
-
-  //             </div>
-  //             <p className="text-sm font-medium text-green-600">${product.price}</p>
-  //           </div>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   </div>
-  // }
-
-
   useEffect(() => {
     total();
   }, [cart]);
