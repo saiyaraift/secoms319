@@ -114,6 +114,9 @@ export const App = () => {
 
   function handleClick(tag){
     let filtered = Products.filter(cat => cat.category === tag);
+    if(tag === "all"){
+      filtered = Products; 
+    }
     setProductsCategory(filtered);
     console.log("Step 2: STATISTICS",Products.length,ProductsCategory.length);
   }
