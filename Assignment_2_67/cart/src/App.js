@@ -68,6 +68,10 @@ export const App = () => {
 
       <div id='div_c'>
           <h3>Thank you for your purchase!</h3>
+          <h3>Your order included:</h3>
+          <h3>{cart.forEach.name}</h3>
+          <h3>The total was: {cartTotal}</h3>
+          <button type="button" className="but" onClick={()=>ret()}>Return</button>
       </div>
 
       <div id='div_id'> 
@@ -94,7 +98,7 @@ export const App = () => {
   <input type="text" id="expiry-date" name="expiry-date" required></input><br></br>
   <label for="cvv">CVV:</label>
   <input type="text" id="cvv" name="cvv" required></input><br></br>
-  <input type="submit"  className='but' value="Submit" onClick={()=>confirmation()}></input>
+  <input type="button"  className='but' value="Submit" onClick={()=>confirmation()}></input>
   <input type="button" className='but'  value="Cancel" onClick={()=>closePaymentFormWindow()}></input>
 </form>
 </div>
@@ -143,6 +147,14 @@ export const App = () => {
   function handleClickCart(a){
     setProductsCategory(a);
   
+  }
+
+  function ret(){
+    document.getElementById('div_c').style.visibility = 'hidden';
+    setProductsCategory(Products);
+    setCart([]);
+    
+
   }
 
   function confirmation(){
