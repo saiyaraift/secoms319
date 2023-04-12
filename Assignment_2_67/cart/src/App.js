@@ -62,8 +62,10 @@ export const App = () => {
           </div>
         ))}
       </div>
+      <button type="button" onClick={()=>openPaymentFormWindow()}>Check Out</button>
     </div>
   }
+
 
   const addToCart = (product, index) => {
     console.log("MADE IT WITH ADD BUTTON WITH THE PRODUCT" + {product})
@@ -77,18 +79,57 @@ export const App = () => {
     setCart(hardCopy);
   };
 
-  // const cartItems = cart.map((product) => (
-  //   <div className="row border-top border-bottom " key={product.id}>
-  //     <div className="row main align-items-center">
-  //       <div className="col-2">
-  //         <img className="img-fluid" src={product.image} />
-  //       </div>
-  //       <div className="col">
-  //         ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
-  //       </div>
-  //     </div>
-  //   </div>
-  // ));
+   const render_cart = (cart) => {
+    return <div className='category-section fixed'>
+      <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">Cart ({cart.length})</h2>
+      <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10" style={{
+        maxHeight: '800px', overflowY:
+          'scroll'
+      }}>
+        {/* Loop Products */}
+        {cart.map((product, index) => (
+          <div key={index} className="group relative shadow-lg pointer-events-none" >
+            <div className=" min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
+              <img
+                alt="Product Image"
+                src={product.image}
+                className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+              />
+            </div>
+            <div className="flex justify-between p-3">
+              <div>
+                <h3 className="text-sm text-gray-700">
+                  <a href={product.href}>
+                    <span aria-hidden="true" className="absolute inset-0" />
+                    <span style={{ fontSize: '16px', fontWeight: '600' }}>{product.title}</span>
+                  </a>
+                  <p>Tag - {product.category}</p>
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">Rating: {product.rating.rate}</p>
+                <p>{product.description}</p>
+
+                <div className="inline-flex">
+                  <button type="button" className="bg-gray-300 group-hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer pointer-events-auto" 
+                    onClick={() => removeFromCart(product, index)}>
+                    -
+                  </button>
+                  <button type= "button" className="bg-gray-300 group-hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer pointer-events-auto" 
+                    onClick={() => addToCart(product, index)}>
+                    +
+                  </button>
+                </div>
+                <div>
+                  ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
+                </div> 
+
+              </div>
+              <p className="text-sm font-medium text-green-600">${product.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  }
 
 
   useEffect(() => {
@@ -116,6 +157,90 @@ export const App = () => {
     setProductsCategory(filtered);
     console.log("Step 2: STATISTICS",Products.length,ProductsCategory.length);
   }
+
+  function handleClickCart(a){
+    setProductsCategory(a);
+  
+  }
+
+ function openPaymentFormWindow() {
+  const width = 500;
+  const height = 600;
+  const left = (window.innerWidth / 2) - (width / 2);
+  const top = (window.innerHeight / 2) - (height / 2);
+  const paymentFormWindow = window.open("", "Payment Form", `width=${width}, height=${height}, left=${left}, top=${top}`);
+  paymentFormWindow.document.write(`
+  <form id="purchase-form">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required><br><br>
+
+  <label for="address">Address:</label>
+  <input type="text" id="address" name="address" required><br><br>
+
+  <label for="city">City:</label>
+  <input type="text" id="city" name="city" required><br><br>
+
+  <label for="state">State:</label>
+  <input type="text" id="state" name="state" required><br><br>
+
+  <label for="card-number">Card Number:</label>
+  <input type="text" id="card-number" name="card-number" required><br><br>
+
+  <label for="expiry-date">Expiry Date:</label>
+  <input type="text" id="expiry-date" name="expiry-date" required><br><br>
+
+  <label for="cvv">CVV:</label>
+  <input type="text" id="cvv" name="cvv" required><br><br>
+
+  <input type="submit"  value="Purchase">
+</form>
+
+  `);
+}
+
+// const purchaseForm = document.querySelector('#purchase-form');
+//   purchaseForm.addEventListener('submit', function(event) {
+//     event.preventDefault(); // prevent default form submission behavior
+    
+//     // get form field values
+//     const name = document.querySelector('#name').value;
+//     const email = document.querySelector('#email').value;
+//     const address = document.querySelector('#address').value;
+//     const city = document.querySelector('#city').value;
+//     const cardNumber = document.querySelector('#card-number').value;
+//     const expiryDate = document.querySelector('#expiry-date').value;
+//     const cvv = document.querySelector('#cvv').value;
+    
+//     // create JavaScript object with form field values
+//     const purchase = {
+//       name: name,
+//       email: email,
+//       address: address,
+//       city: city,
+//       cardNumber: cardNumber,
+//       expiryDate: expiryDate,
+//       cvv: cvv
+//     };
+    
+//     // convert JavaScript object to JSON string
+//     const purchaseJSON = JSON.stringify(purchase);
+    
+//     // write JSON string to file using fetch() method
+//     fetch('Form.json', {
+//       method: 'POST',
+//       body: purchaseJSON,
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     }).then(response => {
+//       console.log('Purchase submitted successfully');
+//     }).catch(error => {
+//       console.error('Error submitting purchase:', error);
+//     });
+//   });
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -155,21 +280,22 @@ export const App = () => {
             />
           </div>
 
-          {/* <div">
-            <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-              onClick={() => { console.log(cartItems) }}>
+          <div>
+            <button type="button" className="but"
+              onClick={() => handleClickCart(cart)}>
               cart
             </button>
-            {cartItems}
-          </div> */}
+            <button type="button" className="but"
+              onClick={() => handleClickCart(Products)}>
+              products
+            </button>
+          </div> 
 
         </div>
       </div>
       <div className="ml-5 p-10 xl:basis-4/5">
-        {console.log("Before render :", Products.length, ProductsCategory.length)}
         {render_products(ProductsCategory)}
       </div>
-
     </div>
   );
 }
