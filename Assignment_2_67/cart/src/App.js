@@ -16,6 +16,21 @@ export const App = () => {
   const [zipCode, setZipCode] = useState('');
   const [zipCodeError, setZipCodeError] = useState('');
 
+  const [email, setEmail] = useState('');
+  const [EmailError, setEmailError] = useState('');
+
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardNumberError, setCardNumberError] = useState('');
+
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [state, setState] = useState('');
+  const [city, setCity] = useState('');
+  const [cvv, setCVV] = useState('');
+  const [date, setDate] = useState('');
+
+  const [formError, setFormError] = useState('');
+
   // RENDERS THE SHOPPING/PRODUCTS PAGE WHERE USERS CAN SEARCH BY NAME OR CATEGORY
   // UPON CHECKOUT, THIS IS VIEW IS COLLAPSED AND THE CART VIEW IS OPENED
   const render_products = (ProductsCategory) => {
@@ -118,19 +133,26 @@ export const App = () => {
         <form id="purchase-form">
           <p>Final Total: ${cartTotal}</p>
           <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required></input><br></br>
+          <input type="text" id="name" name="name" required value={name} onChange={handleNameChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
 
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required></input><br></br>
+          <input type="email" id="email" name="email"  value={email} onChange={handleEmailChange} required></input>
+          {EmailError && <span className="error">{EmailError}</span>}
+          <br></br>
 
           <label for="address">Address:</label>
-          <input type="text" id="address" name="address" required></input><br></br>
+          <input type="text" id="address" name="address" required value={address} onChange={handleAddressChange}></input>
+          {formError && <span className="error">{formError}</span>}
+          <br></br>
 
           <label for="city">City:</label>
-          <input type="text" id="city" name="city" required></input><br></br>
+          <input type="text" id="city" name="city" required value={city} onChange={handleCityChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
 
           <label for="state">State:</label>
-          <input type="text" id="state" name="state" required></input><br></br>
+          <input type="text" id="state" name="state" required value={state} onChange={handleStateChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
 
           <label for="state">zipCode:</label>
           <input type="text" id="zipCode" name="zipCode" value={zipCode} onChange={handleZipCodeChange}
@@ -139,11 +161,18 @@ export const App = () => {
            <br></br>
 
           <label for="card-number">Card Number:</label>
-          <input type="text" id="card-number" name="card-number" required></input><br></br>
+          <input type="text" id="card-number" name="card-number" value={cardNumber} onChange={handleCardNumberChange} required></input>
+          {cardNumberError && <span className="error">{cardNumberError}</span>}
+          <br></br>
+
           <label for="expiry-date">Expiry Date:</label>
-          <input type="text" id="expiry-date" name="expiry-date" required></input><br></br>
+          <input type="text" id="expiry-date" name="expiry-date" required value={date} onChange={handleDateChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
+
           <label for="cvv">CVV:</label>
-          <input type="text" id="cvv" name="cvv" required></input><br></br>
+          <input type="text" id="cvv" name="cvv" required value={cvv} onChange={handleCVVChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
+
           <input type="button" className='but' value="Order" onClick={() => confirmation()}></input>
           <input type="button" className='but' value="Cancel" onClick={() => closePaymentFormWindow()}></input>
         </form> 
@@ -157,6 +186,19 @@ export const App = () => {
     </div>
   }
 
+  const handleEmailChange = (event) => {
+    const { value } = event.target;
+    setEmail(value);
+
+    // Regex to validate email format
+    const validEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!validEmailRegex.test(value)) {
+      setEmailError('Invalid email address');
+    } else {
+      setEmailError('');
+    }
+  };
 
   const handleZipCodeChange = (event) => {
     const value = event.target.value;
@@ -170,6 +212,48 @@ export const App = () => {
       setZipCodeError('');
     }
   };
+
+  const handleCardNumberChange = (event) => {
+    const { value } = event.target;
+    setCardNumber(value);
+
+    // Regex to validate credit card number format
+    const validCardNumberRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
+
+    if (!validCardNumberRegex.test(value)) {
+      setCardNumberError('Invalid credit card number');
+    } else {
+      setCardNumberError('');
+    }
+  };
+
+  
+  const handleNameChange = (event) => {
+    const { value } = event.target;
+    setName(value);
+  };
+
+  const handleAddressChange = (event) => {
+    const { value } = event.target;
+    setAddress(value);
+  };
+  const handleCityChange = (event) => {
+    const { value } = event.target;
+    setCity(value);
+  };
+  const handleStateChange = (event) => {
+    const { value } = event.target;
+    setState(value);
+  };
+  const handleCVVChange = (event) => {
+    const { value } = event.target;
+    setCVV(value);
+  };
+  const handleDateChange = (event) => {
+    const { value } = event.target;
+    setDate(value);
+  };
+
 
  // RENDERS THE CONFIRMATION PAGE LISTING ORDER AS WELL AS PRICE/USER INFO 
  // UPON RETURN, REFRESHES THE SHOPPING PAGE AND CART
@@ -266,9 +350,19 @@ export const App = () => {
   }
 
   function confirmation(){
+   
+
+    if (!name || !address|| !city || !state ||!cvv ||!date) {
+      setFormError('Please fill out all fields');
+      return;
+    } else {
+      setFormError('');
+      // handle form submission
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'visible';
+    }
+    
 
   }
 
