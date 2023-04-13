@@ -13,6 +13,8 @@ export const App = () => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
+  // RENDERS THE SHOPPING/PRODUCTS PAGE WHERE USERS CAN SEARCH BY NAME OR CATEGORY
+  // UPON CHECKOUT, THIS IS VIEW IS COLLAPSED AND THE CART VIEW IS OPENED
   const render_products = (ProductsCategory) => {
     return <div id="products" className='category-section fixed'>
       <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">Products ({ProductsCategory.length})</h2>
@@ -69,6 +71,9 @@ export const App = () => {
   }
 
 
+  // RENDERS THE CART VIEW ALONG WITH FORM FOR USER TO SUBMIT PAYMENT INFORMATION
+  // UPON ORDER, WILL COLLAPSE CART VIEW AND OPEN CONFIRMATION VIEW
+  // UPON RETURN, WILL COLLAPSE CART VIEW AND OPEN SHOPPING VIEW
   const cartView = (cart) => {
     return <div id="cart" className='category-section fixed collapse' style={{
       maxHeight: '800px', overflowY:
@@ -130,9 +135,10 @@ export const App = () => {
           <input type="text" id="expiry-date" name="expiry-date" required></input><br></br>
           <label for="cvv">CVV:</label>
           <input type="text" id="cvv" name="cvv" required></input><br></br>
-          <input type="button" className='but' value="Submit" onClick={() => confirmation()}></input>
+          <input type="button" className='but' value="Order" onClick={() => confirmation()}></input>
           <input type="button" className='but' value="Cancel" onClick={() => closePaymentFormWindow()}></input>
-        </form>
+        </form> 
+
       </div>
       <div>
         <button type="button" className="but" onClick={() => renderProducts()}>
@@ -142,6 +148,9 @@ export const App = () => {
     </div>
   }
 
+
+ // RENDERS THE CONFIRMATION PAGE LISTING ORDER AS WELL AS PRICE/USER INFO 
+ // UPON RETURN, REFRESHES THE SHOPPING PAGE AND CART
   const confirmationView = (cart) => {
     return <div id="confirmation" className='category-section fixed collapse'>
         <h3>Thank you for your purchase!</h3>
