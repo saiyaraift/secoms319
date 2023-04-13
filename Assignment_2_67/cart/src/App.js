@@ -14,7 +14,7 @@ export const App = () => {
   const [cartTotal, setCartTotal] = useState(0);
 
   const render_products = (ProductsCategory) => {
-    return <div className='category-section fixed'>
+    return <div id="products" className='category-section fixed'>
       <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">Products ({ProductsCategory.length})</h2>
       <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10" style={{
         maxHeight: '800px', overflowY:
@@ -65,43 +65,119 @@ export const App = () => {
       <div className='left-div'>
       <button type="button" className="but" onClick={()=>openPaymentFormWindow()}>Check Out</button>
       </div>
+    </div>
+  }
 
-      <div id='div_c'>
-          <h3>Thank you for your purchase!</h3>
-          <h3>Your order included:</h3>
-          <h3>{cart.forEach.name}</h3>
-          <h3>The total was: {cartTotal}</h3>
-          <button type="button" className="but" onClick={()=>ret()}>Return</button>
+
+  const cartView = (cart) => {
+    return <div id="cart" className='category-section fixed collapse' style={{
+      maxHeight: '800px', overflowY:
+        'scroll'
+    }}>
+      <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">Cart({cart.length})</h2>
+      <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10" style={{
+        maxHeight: '800px', overflowY:
+          'scroll'
+      }}>
+        {/* Loop Products */}
+        {cart.map((product, index) => (
+          <div key={index} className="group relative shadow-lg pointer-events-none" >
+            <div className=" min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
+              <img
+                alt="Product Image"
+                src={product.image}
+                className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+              />
+            </div>
+            <div className="flex justify-between p-3">
+              <div>
+                <h3 className="text-sm text-gray-700">
+                  <a href={product.href}>
+                    <span aria-hidden="true" className="absolute inset-0" />
+                    <span style={{ fontSize: '16px', fontWeight: '600' }}>{product.title}</span>
+                  </a>
+                  <p>Tag - {product.category}</p>
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">Rating: {product.rating.rate}</p>
+                <p>{product.description}</p>
+              </div>
+              <p className="text-sm font-medium text-green-600">${product.price}</p>
+            </div>
+          </div>
+        ))}
+      </div >
+      <div id='div_id'>
+        <form id="purchase-form">
+          <p>Final Total: ${cartTotal}</p>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required></input><br></br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required></input><br></br>
+
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" required></input><br></br>
+
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" required></input><br></br>
+
+          <label for="state">State:</label>
+          <input type="text" id="state" name="state" required></input><br></br>
+
+          <label for="card-number">Card Number:</label>
+          <input type="text" id="card-number" name="card-number" required></input><br></br>
+          <label for="expiry-date">Expiry Date:</label>
+          <input type="text" id="expiry-date" name="expiry-date" required></input><br></br>
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" name="cvv" required></input><br></br>
+          <input type="button" className='but' value="Submit" onClick={() => confirmation()}></input>
+          <input type="button" className='but' value="Cancel" onClick={() => closePaymentFormWindow()}></input>
+        </form>
       </div>
+      <div>
+        <button type="button" className="but" onClick={() => renderProducts()}>
+          Return
+        </button>
+      </div>
+    </div>
+  }
 
-      <div id='div_id'> 
-<form id="purchase-form">
-  <p>Final Total: ${cartTotal}</p>
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required></input><br></br>
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required></input><br></br>
-
-  <label for="address">Address:</label>
-  <input type="text" id="address" name="address" required></input><br></br>
-
-  <label for="city">City:</label>
-  <input type="text" id="city" name="city" required></input><br></br>
-
-  <label for="state">State:</label>
-  <input type="text" id="state" name="state" required></input><br></br>
-
-  <label for="card-number">Card Number:</label>
-  <input type="text" id="card-number" name="card-number" required></input><br></br>
-  <label for="expiry-date">Expiry Date:</label>
-  <input type="text" id="expiry-date" name="expiry-date" required></input><br></br>
-  <label for="cvv">CVV:</label>
-  <input type="text" id="cvv" name="cvv" required></input><br></br>
-  <input type="button"  className='but' value="Submit" onClick={()=>confirmation()}></input>
-  <input type="button" className='but'  value="Cancel" onClick={()=>closePaymentFormWindow()}></input>
-</form>
-</div>
+  const confirmationView = (cart) => {
+    return <div id="confirmation" className='category-section fixed collapse'>
+        <h3>Thank you for your purchase!</h3>
+        <h3>Your order included:</h3>
+        <h3 className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10" style={{
+        maxHeight: '800px', overflowY:
+          'scroll'
+      }}>
+        {cart.map((product, index) => (
+          <div key={index} className="group relative shadow-lg pointer-events-none" >
+            <div className=" min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
+              <img
+                alt="Product Image"
+                src={product.image}
+                className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+              />
+            </div>
+            <div className="flex justify-between p-3">
+              <div>
+                <h3 className="text-sm text-gray-700">
+                  <a href={product.href}>
+                    <span aria-hidden="true" className="absolute inset-0" />
+                    <span style={{ fontSize: '16px', fontWeight: '600' }}>{product.title}</span>
+                  </a>
+                  <p>Tag - {product.category}</p>
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">Rating: {product.rating.rate}</p>
+                <p>{product.description}</p>
+              </div>
+              <p className="text-sm font-medium text-green-600">${product.price}</p>
+            </div>
+          </div>
+        ))}
+        </h3>
+        <h3>The total was: ${cartTotal}</h3>
+        <button type="button" className="but" onClick={() => ret()}>Return</button>
     </div>
   }
 
@@ -150,22 +226,33 @@ export const App = () => {
   }
 
   function ret(){
-    document.getElementById('div_c').style.visibility = 'hidden';
     setProductsCategory(Products);
     setCart([]);
-    
-
+    document.getElementById('products').style.visibility = 'visible';
+    document.getElementById('cart').style.visibility = 'collapse';
+    //document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('confirmation').style.visibility = 'collapse';
   }
 
   function confirmation(){
-    document.getElementById('div_id').style.visibility = 'hidden';
-    document.getElementById('div_c').style.visibility = 'visible';
+    document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('confirmation').style.visibility = 'visible';
 
   }
 
- function openPaymentFormWindow() {
-  document.getElementById('div_id').style.visibility = 'visible';
-}
+  function renderProducts(){
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('confirmation').style.visibility = 'collapse';
+    document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('products').style.visibility = 'visible';
+  }
+
+  function openPaymentFormWindow() {
+    document.getElementById('products').style.visibility = 'collapse'; 
+    document.getElementById('cart').style.visibility = 'visible';
+    document.getElementById('div_id').style.visibility = 'visible';
+  }
 
 function closePaymentFormWindow() {
   document.getElementById('div_id').style.visibility = 'hidden';
@@ -208,7 +295,7 @@ function closePaymentFormWindow() {
             dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
-
+{/* 
           <div>
             <button type="button" className="but"
               onClick={() => handleClickCart(cart)}>
@@ -218,14 +305,15 @@ function closePaymentFormWindow() {
               onClick={() => handleClickCart(Products)}>
               products
             </button>
-          </div> 
+          </div>  */}
 
         </div>
       </div>
-      <div className="ml-5 p-10 xl:basis-4/5">
+      <div id='display' className="ml-5 p-10 xl:basis-4/5">
         {render_products(ProductsCategory)}
+        {cartView(cart)}
+        {confirmationView(cart)}
       </div>
-
 
 </div>
   );
