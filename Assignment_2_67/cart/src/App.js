@@ -352,7 +352,7 @@ export const App = () => {
   function confirmation(){
    
 
-    if (!name || !address|| !city || !state ||!cvv ||!date) {
+    if (!name || !address|| !city || !state ||!cvv ||!date ||!email ||!cardNumber||!zipCode) {
       setFormError('Please fill out all fields');
       return;
     } else {
