@@ -13,6 +13,9 @@ export const App = () => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
+  const [zipCode, setZipCode] = useState('');
+  const [zipCodeError, setZipCodeError] = useState('');
+
   // RENDERS THE SHOPPING/PRODUCTS PAGE WHERE USERS CAN SEARCH BY NAME OR CATEGORY
   // UPON CHECKOUT, THIS IS VIEW IS COLLAPSED AND THE CART VIEW IS OPENED
   const render_products = (ProductsCategory) => {
@@ -129,6 +132,12 @@ export const App = () => {
           <label for="state">State:</label>
           <input type="text" id="state" name="state" required></input><br></br>
 
+          <label for="state">zipCode:</label>
+          <input type="text" id="zipCode" name="zipCode" value={zipCode} onChange={handleZipCodeChange}
+           required></input>
+           {zipCodeError && <span className="error">{zipCodeError}</span>}
+           <br></br>
+
           <label for="card-number">Card Number:</label>
           <input type="text" id="card-number" name="card-number" required></input><br></br>
           <label for="expiry-date">Expiry Date:</label>
@@ -148,6 +157,19 @@ export const App = () => {
     </div>
   }
 
+
+  const handleZipCodeChange = (event) => {
+    const value = event.target.value;
+    setZipCode(value);
+    console.log(value);
+    console.log(value.length);
+
+    if (value.length !== 5) {
+      setZipCodeError('Zip code must be exactly 5 digits');
+    } else {
+      setZipCodeError('');
+    }
+  };
 
  // RENDERS THE CONFIRMATION PAGE LISTING ORDER AS WELL AS PRICE/USER INFO 
  // UPON RETURN, REFRESHES THE SHOPPING PAGE AND CART
