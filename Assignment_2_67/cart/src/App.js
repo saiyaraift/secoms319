@@ -259,7 +259,9 @@ export const App = () => {
  // UPON RETURN, REFRESHES THE SHOPPING PAGE AND CART
   const confirmationView = (cart) => {
     return <div id="confirmation" className='category-section fixed collapse'>
-        <h3>Thank you for your purchase!</h3>
+        <h3>Thank you for your purchase {name}!</h3>
+        <h3>Card Number: {cardNumber}</h3>
+        <h3>Shipping Address: {address}, {state}, {zipCode}</h3>
         <h3>Your order included:</h3>
         <h3 className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10" style={{
         maxHeight: '800px', overflowY:
@@ -292,6 +294,7 @@ export const App = () => {
         ))}
         </h3>
         <h3>The total was: ${cartTotal}</h3>
+        <h3>(Confirmation email sent to {email})</h3>
         <button type="button" className="but" onClick={() => ret()}>Return</button>
     </div>
   }
@@ -350,8 +353,6 @@ export const App = () => {
   }
 
   function confirmation(){
-   
-
     if (!name || !address|| !city || !state ||!cvv ||!date ||!email ||!cardNumber||!zipCode) {
       setFormError('Please fill out all fields');
       return;
@@ -376,7 +377,9 @@ export const App = () => {
   function openPaymentFormWindow() {
     document.getElementById('products').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
-    document.getElementById('div_id').style.visibility = 'visible';
+    if(cart.length != 0){
+      document.getElementById('div_id').style.visibility = 'visible';
+    }
   }
 
 function closePaymentFormWindow() {
