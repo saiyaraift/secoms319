@@ -211,55 +211,74 @@ function App() {
     document.getElementById('read').style.visibility = "collapse";
     document.getElementById('delete').style.visibility = "collapse";
     document.getElementById('update').style.visibility = "collapse";
-    document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('credits').style.visibility = 'collapse';
     document.getElementById('create').style.visibility = 'visible';
   }
 
   function renderRead() {
     console.log("made it to render read");
-    console.log(document.getElementById('read')); 
+    console.log(document.getElementById('read'));
     document.getElementById('create').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = "collapse";
-    document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('credits').style.visibility = 'collapse';
     document.getElementById('update').style.visibility = "collapse";
     document.getElementById('read').style.visibility = "visible";
   }
 
   function renderUpdate() {
-    document.getElementById('read').style.visbility = 'collapse';
-    document.getElementById('create').style.visibility = 'collapse';  document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('read').style.visibility = 'collapse';
+    document.getElementById('create').style.visibility = 'collapse'; document.getElementById('credits').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = "collapse";
     document.getElementById('update').style.visibility = "visible";
   }
 
   function renderDelete() {
-    document.getElementById('read').style.visbility = 'collapse';
-    document.getElementById('create').style.visibility = 'collapse';  document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('read').style.visibility = 'collapse';
+    document.getElementById('create').style.visibility = 'collapse'; document.getElementById('credits').style.visibility = 'collapse';
     document.getElementById('update').style.visibility = "collapse";
     document.getElementById('delete').style.visibility = "visible";
   }
 
   function renderCredits() {
-    document.getElementById('read').style.visbility = 'collapse';
+    document.getElementById('read').style.visibility = 'collapse';
     document.getElementById('create').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = "collapse";
-    document.getElementById('credits').style.visibility = 'visible'; 
+    document.getElementById('update').style.visibility = "collapse";
+    document.getElementById('credits').style.visibility = 'visible';
   }
 
   return (
     <div>
-      <div id="navbar">
-          <h1 class="font-sans hover:font-serif">Catalog of Products</h1>
-          <div> 
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderCreate}>Create</button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderRead}>Read</button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderUpdate}>Update</button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderDelete}>Delete</button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderCredits}>Credits</button>
+      <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Catalog of Products</span>
+        </div>
+      </nav>
+      <nav class="bg-gray-50 dark:bg-gray-700">
+        <div class="max-w-screen-xl px-4 py-3 mx-auto">
+          <div class="flex items-center">
+            <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
+              <li>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderCreate}>Create</button>
+              </li>
+              <li>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderRead}>Read</button>
+              </li>
+              <li>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderUpdate}>Update</button>
+              </li>
+              <li>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderDelete}>Delete</button>
+              </li>
+              <li>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderCredits}>Credits</button>
+              </li>
+            </ul>
           </div>
-      </div>
-      
-      
+        </div>
+      </nav>
+
       <div id="read" className='category-section fixed collapse'>
         <button onClick={() => getAllProducts()}>Show All users</button>
         <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProduct(e.target.value)} />
@@ -272,7 +291,7 @@ function App() {
 
       <div id="update" className='category-section fixed collapse'>
         <h3>Update One Product Price by Id:</h3>
-              {/* <h3>Update One Product Price by Id:</h3>
+        {/* <h3>Update One Product Price by Id:</h3>
       <input type="text" id="message" name="message" placeholder="id" onChange={(e) => updateProduct(e.target.value)}/>
       {viewer3 && <div>Product: {showOneItem}</div>}
       <h5>Update Price To:</h5>
