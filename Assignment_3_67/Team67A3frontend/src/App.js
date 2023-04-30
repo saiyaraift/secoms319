@@ -279,18 +279,26 @@ function App() {
         </div>
       </nav>
 
-      <div id="read" className='category-section fixed collapse'>
-        <button onClick={() => getAllProducts()}>Show All users</button>
+      <div id="read" className='category-section fixed collapse flex flex-row'>
+        <div style={{
+        maxHeight: '300px', overflowY:
+          'scroll'
+      }} >
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => getAllProducts()}>Show All Products</button>
+        {viewer1 && <div>Available Products: {showAllItems}</div>}
+        </div>
+        <div>
+        <h3 class="font-bold">Search by Id:</h3>
         <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProduct(e.target.value)} />
-        <h3>Show all available Products:</h3>
-        {viewer1 && <div>Products {showAllItems}</div>}
-        <hr></hr>
-        <h3>Show one Product by Id:</h3>
         {viewer2 && <div>Product: {showOneItem}</div>}
+        </div>
+        <hr></hr>
       </div>
 
       <div id="update" className='category-section fixed collapse'>
-        <h3>Update One Product Price by Id:</h3>
+        <h3 class="font-bold">Update One Product Price by Id:</h3>
+        <h2>Enter Id Here</h2>
+        <h2>Enter price here</h2>
         {/* <h3>Update One Product Price by Id:</h3>
       <input type="text" id="message" name="message" placeholder="id" onChange={(e) => updateProduct(e.target.value)}/>
       {viewer3 && <div>Product: {showOneItem}</div>}
@@ -300,7 +308,7 @@ function App() {
       </div>
 
 
-      <div id="create" className='category-section fixed collapse' action=''>
+      <div id="create" className='category-section fixed visible' action=''>
         <h3 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Add a new product :</h3>
         <form class="w-full max-w-lg">
           <div class="flex flex-wrap -mx-3 mb-6">
@@ -359,29 +367,15 @@ function App() {
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" onClick={handleOnSubmit}>Submit</button>
           </div>
         </form>
-
-        {/* <form action="">
-          <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} />
-          <input type="text" placeholder="title?" name="title" value={addNewProduct.title} onChange={handleChange} />
-          <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} />
-          <input type="text" placeholder="description?" name="description" value={addNewProduct.description} onChange={handleChange} />
-          <input type="text" placeholder="category?" name="category" value={addNewProduct.category} onChange={handleChange} />
-          <input type="text" placeholder="image?" name="image" value={addNewProduct.image} onChange={handleChange} />
-          <input type="number" placeholder="rate?" name="rate" value={addNewProduct.rating.rate} onChange={handleChange} />
-          <input type="number" placeholder="count?" name="count" value={addNewProduct.rating.count} onChange={handleChange} />
-          <button type="submit" onClick={handleOnSubmit}>
-            submit
-          </button>
-        </form> */}
       </div>
 
       <div id="delete" className='category-section fixed collapse'>
-        <h3>Delete one product:</h3>
+        <h3 class="font-bold">Delete One Product:</h3>
         <input type="checkbox" id="acceptdelete" name="acceptdelete" checked={checked4}
           onChange={(e) => setChecked4(!checked4)} />
-        <button onClick={() => getOneByOneProductPrev()}>Prev</button>
-        <button onClick={() => getOneByOneProductNext()}>Next</button>
-        <button onClick={() => deleteOneProduct(product[index]._id)}>Delete</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  onClick={() => getOneByOneProductPrev()}>Prev</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  onClick={() => getOneByOneProductNext()}>Next</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  onClick={() => deleteOneProduct(product[index]._id)}>Delete</button>
         {checked4 && (
           <div key={product[index]._id}>
             <img src={product[index].image} width={30} /> <br />
