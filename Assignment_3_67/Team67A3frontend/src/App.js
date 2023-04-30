@@ -206,30 +206,82 @@ function App() {
     getAllProducts();
   }, [checked4]);
 
+  function renderCreate() {
+    console.log("made it to render create");
+    document.getElementById('read').style.visibility = "collapse";
+    document.getElementById('delete').style.visibility = "collapse";
+    document.getElementById('update').style.visibility = "collapse";
+    document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'visible';
+  }
+
+  function renderRead() {
+    console.log("made it to render read");
+    console.log(document.getElementById('read')); 
+    document.getElementById('create').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = "collapse";
+    document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = "collapse";
+    document.getElementById('read').style.visibility = "visible";
+  }
+
+  function renderUpdate() {
+    document.getElementById('read').style.visbility = 'collapse';
+    document.getElementById('create').style.visibility = 'collapse';  document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('delete').style.visibility = "collapse";
+    document.getElementById('update').style.visibility = "visible";
+  }
+
+  function renderDelete() {
+    document.getElementById('read').style.visbility = 'collapse';
+    document.getElementById('create').style.visibility = 'collapse';  document.getElementById('credits').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = "collapse";
+    document.getElementById('delete').style.visibility = "visible";
+  }
+
+  function renderCredits() {
+    document.getElementById('read').style.visbility = 'collapse';
+    document.getElementById('create').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = "collapse";
+    document.getElementById('credits').style.visibility = 'visible'; 
+  }
 
   return (
     <div>
-      <h1>Catalog of Products </h1>
-      <button onClick={() => getAllProducts()}>Show All users</button>
-      <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProduct(e.target.value)} />
-      <h3>Show all available Products:</h3>
-      <hr></hr>
-      {viewer1 && <div>Products {showAllItems}</div>}
-      <hr></hr>
-      <h3>Show one Product by Id:</h3>
-      {viewer2 && <div>Product: {showOneItem}</div>}
-      <hr></hr>
+      <div id="navbar">
+          <h1 class="font-sans hover:font-serif">Catalog of Products</h1>
+          <div> 
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderCreate}>Create</button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderRead}>Read</button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderUpdate}>Update</button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderDelete}>Delete</button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" variant="primary" onClick={renderCredits}>Credits</button>
+          </div>
+      </div>
+      
+      
+      <div id="read" className='category-section fixed collapse'>
+        <button onClick={() => getAllProducts()}>Show All users</button>
+        <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProduct(e.target.value)} />
+        <h3>Show all available Products:</h3>
+        {viewer1 && <div>Products {showAllItems}</div>}
+        <hr></hr>
+        <h3>Show one Product by Id:</h3>
+        {viewer2 && <div>Product: {showOneItem}</div>}
+      </div>
 
-
-      {/* <h3>Update One Product Price by Id:</h3>
+      <div id="update" className='category-section fixed collapse'>
+        <h3>Update One Product Price by Id:</h3>
+              {/* <h3>Update One Product Price by Id:</h3>
       <input type="text" id="message" name="message" placeholder="id" onChange={(e) => updateProduct(e.target.value)}/>
       {viewer3 && <div>Product: {showOneItem}</div>}
       <h5>Update Price To:</h5>
       <input type="text" id="price" name="message" placeholder="price"/>
       <hr></hr>  */}
+      </div>
 
 
-      <div>
+      <div id="create" className='category-section fixed collapse'>
         <h3>Add a new product :</h3>
         <form action="">
           <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} />
@@ -245,8 +297,8 @@ function App() {
           </button>
         </form>
       </div>
-      <hr></hr>
-      <div>
+
+      <div id="delete" className='category-section fixed collapse'>
         <h3>Delete one product:</h3>
         <input type="checkbox" id="acceptdelete" name="acceptdelete" checked={checked4}
           onChange={(e) => setChecked4(!checked4)} />
@@ -264,6 +316,10 @@ function App() {
             {product[index].rating.count} <br />
           </div>
         )}
+      </div>
+
+      <div id="credits" className='category-section fixed collapse'>
+        <h1>Credits view</h1>
       </div>
 
     </div>
