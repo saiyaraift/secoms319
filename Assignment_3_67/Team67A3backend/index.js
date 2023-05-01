@@ -76,19 +76,19 @@ app.delete("/delete", async (req, res) => {
     }
 });
 
-// app.put("/update/:id", async(req, res) => {
-//     console.log("Update :", req.body); 
-//     try {
-//         const query = { price: req.body.price };
-//         await Product.updateOne(query);
-//         const messageResponse = {
-//             message: `Product ${req.body._id} updated correctly`,
-//         };
-//         res.send(JSON.stringify(messageResponse));
-//     } catch (err) {
-//         console.log("Error while deleting :" + p_id + " " + err);
-//     }
-// }); 
+app.put("/update", async (req, res) => {
+    console.log("Update :", req.body);
+    try {
+        const query = { _id: req.body._id, price: req.body.price};
+        await Product.updateOne(query);
+        const messageResponse = {
+            message: `Product ${req.body._id} updated correctly`,
+        };
+        res.send(JSON.stringify(messageResponse));
+    } catch (err) {
+        console.log("Error while updating :" + p_id + " " + err);
+    }
+});
 
 
 const port = process.env.PORT || 4000;
