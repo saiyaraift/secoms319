@@ -7,7 +7,11 @@ function App() {
   const [oneProduct, setOneProduct] = useState([]);
   const [viewer2, setViewer2] = useState(false);
 
+  const [price, setPrice] = useState(0); 
+  const [updatedPrice, setUpdatedPrice] = useState(price); 
+  const [idToUpdate, setIdToUpdate] = useState(0); 
   const [viewer3, setViewer3] = useState(false);
+
 
 
   const [viewer4, setViewer4] = useState(false);
@@ -44,45 +48,6 @@ function App() {
       console.log("Wrong number of Product id.");
     }
   }
-
-  // function updateProduct(id){
-  //   console.log(id);
-  //   if (id >= 1 && id <= 20) {
-  //     fetch("http://localhost:4000/" + id)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         console.log("Show one product :", id);
-  //         console.log(data);
-  //         const dataArr = [];
-  //         dataArr.push(data);
-  //         setOneProduct(dataArr);
-  //       });
-  //     setViewer3(!viewer3);
-  //   } else {
-  //     console.log("Wrong number of Product id.");
-  //   }
-  //   const updatePrice = document.getElementById("price").value; 
-  //   console.log(id, updatePrice); 
-  //   fetch('http://localhost:4000/update/' + id, {
-  //     method: "PUT", 
-  //     headers: {"content-type":"application/json"}, 
-  //     body: JSON.stringify({
-  //       price: updatePrice
-  //     }), 
-  //   }).then((response) => {
-  //     if(response.ok){
-  //       console.log("update fetch works"); 
-  //       return response.json(); 
-  //     }
-  //     else {
-  //       throw new Error("failed to updated price"); 
-  //     }
-  //   }).then((data) => {
-  //     console.log(data); 
-  //     setOneProduct([data]); 
-  //     setViewer3(!viewer3); 
-  //   }).catch((error) => console.log(error)); 
-  // }
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -166,6 +131,49 @@ function App() {
         }
       });
     setChecked4(!checked4);
+  }
+
+  function updateOneProduct(updateid, updatePrice) {
+    console.log("Product to update :", updateid);
+    fetch("http://localhost:4000/update", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ _id: updateid, price: updatePrice}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Update a product completed : ", updateid);
+        console.log(data);
+        if (data) {
+          //const keys = Object.keys(data);
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+      setViewer3(!viewer3);
+  }
+
+  function getOneProductToUpdate(id) {
+    setIdToUpdate(id); 
+    console.log(id);
+    if (id >= 1 && id <= 20) {
+      fetch("http://localhost:4000/" + id)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Show one product :", id);
+          console.log(data);
+          const dataArr = [];
+          dataArr.push(data);
+          setOneProduct(dataArr);
+        });
+      setViewer3(!viewer3);
+    } else {
+      console.log("Wrong number of Product id.");
+    }
+  }
+
+  function handleUpdateClick(event){
+    setUpdatedPrice(price); 
   }
 
   const showAllItems = product.map((el) => (
@@ -296,15 +304,17 @@ function App() {
       </div>
 
       <div id="update" className='category-section fixed collapse'>
-        <h3 class="font-bold">Update One Product Price by Id:</h3>
-        <h2>Enter Id Here</h2>
-        <h2>Enter price here</h2>
-        {/* <h3>Update One Product Price by Id:</h3>
-      <input type="text" id="message" name="message" placeholder="id" onChange={(e) => updateProduct(e.target.value)}/>
-      {viewer3 && <div>Product: {showOneItem}</div>}
-      <h5>Update Price To:</h5>
-      <input type="text" id="price" name="message" placeholder="price"/>
-      <hr></hr>  */}
+        <h2 class="font-bold">Update One Product Price by Id:</h2>
+        <h3 class="font-bold">Enter Id Here</h3>
+        <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProductToUpdate(e.target.value)} />
+        {viewer3 && <div>{showOneItem}</div>}
+
+
+        <h3 class="font-bold">Enter New Price:</h3>
+        <input type="number" id="price" name="price" placeholder="id" value={price} onChange={(e) => setPrice(e.target.value)} />
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  onClick={(e) => setUpdatedPrice(price)}>Update</button>
+        <br></br>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  onClick={(e) => updateOneProduct(idToUpdate, price)}>Submit Update</button>
       </div>
 
 
