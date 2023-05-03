@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const Product = require("./dataSchema.js");
 const app = express();
 
 app.use(express.json());
