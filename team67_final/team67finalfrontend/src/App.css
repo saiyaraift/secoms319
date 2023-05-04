@@ -36,3 +36,73 @@
     transform: rotate(360deg);
   }
 }
+#paymentFormContainer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 600px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.but{
+  background-color: pink;
+  border: none;
+  border-radius: 15px;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px 24px ;
+  text-align: center;
+  margin-inline-end: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.but:hover {
+  background-color: #f2f2f2;
+}
+
+.left-div {
+ float : left;
+
+}
+
+#div_id {
+  /*height: 400px;*/
+  visibility:hidden;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  overflow: scroll;
+
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#div_c {
+  /*height: 400px;*/
+  visibility:hidden;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+
+}
+
+
+
