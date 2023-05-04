@@ -439,7 +439,7 @@ function closePaymentFormWindow() {
             dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
-{/* 
+{
           <div>
             <button type="button" className="but"
               onClick={() => handleClickCart(cart)}>
@@ -447,9 +447,15 @@ function closePaymentFormWindow() {
             </button>
             <button type="button" className="but"
               onClick={() => handleClickCart(Products)}>
-              products
+              shop
             </button>
-          </div>  */}
+            <button type="button"  className="but" >
+            custom order
+            </button>
+            <button type="button"  className="but" >
+            owner
+            </button>
+          </div>  }
 
         </div>
       </div>
