@@ -72,7 +72,7 @@ app.delete("/delete", async (req, res) => {
         };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
-        console.log("Error while deleting :" + p_id + " " + err);
+        console.log("Error while deleting :" + req.body._id + " " + err);
     }
 });
 
@@ -82,11 +82,13 @@ app.put("/update", async (req, res) => {
         const query = { _id: req.body._id, price: req.body.price};
         await Product.updateOne(query);
         const messageResponse = {
+           
             message: `Product ${req.body._id} updated correctly`,
         };
+        console.log("-----------updated-----");
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
-        console.log("Error while updating :" + p_id + " " + err);
+        console.log("Error while updating :" + req.body._id + " " + err);
     }
 });
 

@@ -373,7 +373,7 @@ export const App = () => {
   };
 
   function howManyofThis(id) {
-    console.log("HOW MANY OF THIS: " + id); 
+    //console.log("HOW MANY OF THIS: " + id); 
     let hmot = cart.filter((cartItem) => cartItem._id === id);
     return hmot.length;
   }
