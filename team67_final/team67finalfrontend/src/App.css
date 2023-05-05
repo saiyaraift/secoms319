@@ -147,5 +147,11 @@ label {
     margin-top: 3%
 }
 
+.imgf {
+  max-width: 100%; /* Limit the image width to the container width */
+  display: block; /* Remove any default padding or margin */
+  margin: 0 auto; /* Center the image horizontally */
+  border-radius: 5px; /* Add a border radius for rounded corners */
+}
 
 

@@ -1,4 +1,5 @@
 import logo from './logo.png';
+import selfie from './selfie.JPEG';
 import "./App.css";
 import React, {useState, useEffect} from "react";
 //import {Products} from "./Products"
@@ -616,7 +617,7 @@ const creatorView = (showCreator) => {
   return <div id="creator" className='category-section fixed collapse'>
       <div class="album py-5 bg-light">
     <div class="container" id="cre">
-      <img id="selfie" src="./myotherimages/selfie.JPEG" alt="picture of creator"></img>
+      <img class = "imgf" id="selfie" src={selfie} alt="picture of creator"></img>
       <span id="span_cre">
         <h2>about me...</h2>
         <p>hi, my name is olivia garcia!</p>
