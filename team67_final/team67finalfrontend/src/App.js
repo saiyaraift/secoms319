@@ -15,6 +15,8 @@ export const App = () => {
   const [showAuthor, setAuthor] = useState(false);
   const [deleteProduct, setDeleteProduct] = useState(false);
   const [updateProduct, setUpdateProduct] = useState(false);
+  const [createProduct, setCreateProduct] = useState(false);
+  
 
 
 
@@ -395,6 +397,7 @@ export const App = () => {
     document.getElementById('products').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
   }
 
@@ -409,6 +412,7 @@ export const App = () => {
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -424,6 +428,7 @@ export const App = () => {
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -441,6 +446,7 @@ export const App = () => {
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('confirmation').style.visibility = 'visible';
     }
   }
@@ -457,6 +463,7 @@ export const App = () => {
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('cusconfirmation').style.visibility = 'visible';
     }
   }
@@ -471,6 +478,7 @@ export const App = () => {
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -481,6 +489,7 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
     if(cart.length != 0){
       document.getElementById('div_id').style.visibility = 'visible';
@@ -495,6 +504,7 @@ export const App = () => {
     document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('custom').style.visibility = 'visible';
     document.getElementById('div_c').style.visibility = 'visible';
   }
@@ -509,6 +519,7 @@ export const App = () => {
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('creator').style.visibility = 'visible';
   }
 
@@ -522,6 +533,7 @@ export const App = () => {
     document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
+    document.getElementById('create').style.visibility = 'collapse'; 
     document.getElementById('author').style.visibility = 'visible';
   }
 
@@ -539,6 +551,7 @@ function renderDelete(){
   document.getElementById('creator').style.visibility = 'collapse';
   document.getElementById('author').style.visibility = 'collapse';
   document.getElementById('update').style.visibility = 'collapse'; 
+  document.getElementById('create').style.visibility = 'collapse'; 
   document.getElementById('delete').style.visibility = 'visible'; 
 }
 
@@ -552,7 +565,22 @@ function renderUpdate(){
   document.getElementById('creator').style.visibility = 'collapse';
   document.getElementById('author').style.visibility = 'collapse';
   document.getElementById('delete').style.visibility = 'collapse'; 
+  document.getElementById('create').style.visibility = 'collapse'; 
   document.getElementById('update').style.visibility = 'visible'; 
+}
+
+function renderCreate(){
+  document.getElementById('products').style.visibility = 'collapse';
+  document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
+  document.getElementById('cart').style.visibility = 'collapse';
+  document.getElementById('div_id').style.visibility = 'collapse';
+  document.getElementById('custom').style.visibility = 'collapse';
+  document.getElementById('div_c').style.visibility = 'collapse';
+  document.getElementById('creator').style.visibility = 'collapse';
+  document.getElementById('author').style.visibility = 'collapse';
+  document.getElementById('delete').style.visibility = 'collapse'; 
+  document.getElementById('update').style.visibility = 'collapse'; 
+  document.getElementById('create').style.visibility = 'visible'; 
 }
 
 function getOneProduct(id) {
@@ -930,6 +958,129 @@ const updateView = (updateProduct) => {
 }
 
 
+// CREATE PRODUCT !!!!!
+const [addNewProduct, setAddNewProduct] = useState({
+  _id: 0,
+  title: "",
+  price: 0.0,
+  description: "",
+  category: "",
+  image: "http://127.0.0.1:4000/images/",
+  rating: { rate: 0.0, count: 0 },
+});
+
+function handleChange2(evt) {
+  const value = evt.target.value;
+  if (evt.target.name === "_id") {
+    setAddNewProduct({ ...addNewProduct, _id: value });
+  } else if (evt.target.name === "title") {
+    setAddNewProduct({ ...addNewProduct, title: value });
+  } else if (evt.target.name === "price") {
+    setAddNewProduct({ ...addNewProduct, price: value });
+  } else if (evt.target.name === "description") {
+    setAddNewProduct({ ...addNewProduct, description: value });
+  } else if (evt.target.name === "category") {
+    setAddNewProduct({ ...addNewProduct, category: value });
+  } else if (evt.target.name === "image") {
+    const temp = value;
+    setAddNewProduct({ ...addNewProduct, image: temp });
+  } else if (evt.target.name === "rate") {
+    setAddNewProduct({ ...addNewProduct, rating: { rate: value } });
+  } else if (evt.target.name === "count") {
+    const temp = addNewProduct.rating.rate;
+    setAddNewProduct({
+      ...addNewProduct,
+      rating: { rate: temp, count: value },
+    });
+  }
+}
+
+function handleOnSubmit(e) {
+  e.preventDefault();
+  console.log(e.target.value);
+  fetch("http://localhost:4000/insert", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(addNewProduct),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Post a new product completed");
+      console.log(data);
+      if (data) {
+        //const keys = Object.keys(data);
+        const value = Object.values(data);
+        alert(value);
+      }
+    });
+}
+
+const createView = (createProduct) => {
+  return <div id="create" className='category-section fixed collapse' action=''>
+  <h3 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Add a new product :</h3>
+  <form class="w-full max-w-lg">
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+          ID
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange2} />
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+          Title
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="title?" name="title" value={addNewProduct.title} onChange={handleChange2} />
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+          Description
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="description?" name="description" value={addNewProduct.description} onChange={handleChange2} />
+      </div>
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+          Image
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="image?" name="image" value={addNewProduct.image} onChange={handleChange2} />
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-2">
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+          Price
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange2} />
+      </div>
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+          Category
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="category?" name="category" value={addNewProduct.category} onChange={handleChange2} />
+      </div>
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+          Rate
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="number" placeholder="rate?" name="rate" value={addNewProduct.rating.rate} onChange={handleChange2} />
+      </div>
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+          Count
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="number" placeholder="count?" name="count" value={addNewProduct.rating.count} onChange={handleChange2} />
+      </div>
+      <button className="but" type="submit" onClick={handleOnSubmit}>Submit</button>
+    </div>
+  </form>
+  <div>
+    <button type="button" className="but" onClick={() => handleClickShop()}>Return</button>
+  </div>
+</div>
+}
+
 
 
   return (
@@ -982,6 +1133,9 @@ const updateView = (updateProduct) => {
             {/* <button type="button"  className="but"  onClick={() => } >
             update
             </button> */}
+            <button type="button"  className="but"  onClick={() => renderCreate()} >
+            create
+            </button>
             <button type="button"  className="but"  onClick={() => renderDelete()} >
             delete
             </button>
@@ -1002,6 +1156,7 @@ const updateView = (updateProduct) => {
         {authorView(showAuthor)}
         {deleteView(deleteProduct)}
         {updateView(updateProduct)}
+        {createView(createProduct)}
       </div>
 
 </div>
