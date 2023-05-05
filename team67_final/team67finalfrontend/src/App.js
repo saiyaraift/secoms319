@@ -150,6 +150,8 @@ export const App = () => {
           </div>
         ))}
       </div >
+
+
       <div id='div_id'>
         <form id="purchase-form">
           <p>Final Total: ${cartTotal}</p>
@@ -361,20 +363,40 @@ export const App = () => {
   }
 
   function handleClickCart(a){
-    setProductsCategory(a);
-  
-  }
-
-  function ret(){
-    setProductsCategory(Products);
-    setCart([]);
-    document.getElementById('products').style.visibility = 'visible';
-    document.getElementById('cart').style.visibility = 'collapse';
+    //setProductsCategory(a);
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'collapse';
+    document.getElementById('products').style.visibility = 'collapse';
+    document.getElementById('cart').style.visibility = 'visible';
+  }
+
+  function handleClickShop(a){
+    //setProductsCategory(a);
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('confirmation').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse';
+    document.getElementById('creator').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'collapse';
+    document.getElementById('author').style.visibility = 'collapse';
+    document.getElementById('products').style.visibility = 'visible';
+  }
+
+  function ret(){
+    setProductsCategory(Products);
+    setCart([]);
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('confirmation').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse';
+    document.getElementById('creator').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'collapse';
+    document.getElementById('author').style.visibility = 'collapse';
+    document.getElementById('products').style.visibility = 'visible';
   }
 
   function confirmation(){
@@ -387,6 +409,7 @@ export const App = () => {
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'visible';
     }
@@ -412,6 +435,7 @@ export const App = () => {
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'visible';
   }
@@ -420,6 +444,7 @@ export const App = () => {
     document.getElementById('products').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse'; 
+    document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('cart').style.visibility = 'visible';
     if(cart.length != 0){
       document.getElementById('div_id').style.visibility = 'visible';
@@ -609,7 +634,7 @@ function closePaymentFormWindow() {
 
 
       <div>
-        <button type="button" className="but" onClick={() => renderProducts()}>
+        <button type="button" className="but" onClick={() => handleClickShop()}>
           Return
         </button>
       </div>
@@ -634,7 +659,7 @@ const creatorView = (showCreator) => {
   return <div id="creator" className='category-section fixed collapse'>
       <div class="album py-5 bg-light">
     <div class="container" id="cre">
-      <img class = "imgf h-auto max-w-full rounded-lg" id="selfie" src={selfie} alt="picture of creator"></img>
+      <img class = "imgf" id="selfie" src={selfie} alt="picture of creator" style={{ width: 600, height: 650 }}></img>
       <span id="span_cre">
         <h2>about me...</h2>
         <p>hi, my name is olivia garcia!</p>
@@ -653,7 +678,7 @@ const creatorView = (showCreator) => {
       </span>
     </div>
   </div>
-      <button type="button" className="but" onClick={() => ret()}>Return</button>
+      <button type="button" className="but" onClick={() => handleClickShop()}>Return</button>
   </div>
 }
 
@@ -666,7 +691,7 @@ const authorView = (showAuthor) => {
      <p>Date: May 6th, 2023</p>
      <p>This website's purpose is to supply a platform to sell and share crochet creations</p>
  
-      <button type="button" className="but" onClick={() => ret()}>Return</button>
+      <button type="button" className="but" onClick={() => handleClickShop()}>Return</button>
   </div>
 }
 
@@ -703,7 +728,7 @@ const authorView = (showAuthor) => {
               cart
             </button>
             <button type="button" className="but"
-              onClick={() => handleClickCart(Products)}>
+              onClick={() => handleClickShop(Products)}>
               shop
             </button>
             <button type="button"  className="but"  onClick={() => openCustomFromWindow()}>
