@@ -11,6 +11,7 @@ export const App = () => {
   const [query, setQuery] = useState('');
 
   const [showForm, setShowForm] = useState(false);
+  const [showCreator, setCreator] = useState(false);
 
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
@@ -368,6 +369,8 @@ export const App = () => {
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse';
+    document.getElementById('creator').style.visibility = 'collapse';
   }
 
   function confirmation(){
@@ -379,15 +382,30 @@ export const App = () => {
       // handle form submission
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'visible';
     }
-    
+  }
 
+  function confirmationCus(){
+    if (!name || !address|| !city || !state||!email ||!zipCode) {
+      setFormError('Please fill out all fields');
+      return;
+    } else {
+      setFormError('');
+      // handle form submission
+    document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'visible';
+    }
   }
 
   function renderProducts(){
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'visible';
@@ -395,6 +413,7 @@ export const App = () => {
 
   function openPaymentFormWindow() {
     document.getElementById('products').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
     if(cart.length != 0){
@@ -403,11 +422,22 @@ export const App = () => {
   }
 
   function openCustomFromWindow(){
-    document.getElementById('products').style.visibility = 'collapse'; 
+    document.getElementById('products').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'visible';
     document.getElementById('div_c').style.visibility = 'visible';
+  }
+
+  function openCreatorWindow(){
+    document.getElementById('products').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('creator').style.visibility = 'visible';
   }
 
 function closePaymentFormWindow() {
@@ -510,7 +540,7 @@ function closePaymentFormWindow() {
           </div>
   
           <div>
-              <label for="message">Specifications (inlcude colors): </label>
+              <label for="message" id="spec">Specifications (inlcude colors): </label>
               <textarea
                   rows="6"
                   name="message"
@@ -548,23 +578,10 @@ function closePaymentFormWindow() {
            required></input>
            {zipCodeError && <span className="error">{zipCodeError}</span>}
            <br></br>
-
-          <label for="card-number">Card Number:</label>
-          <input type="text" id="card-number" name="card-number" value={cardNumber} onChange={handleCardNumberChange} required></input>
-          {cardNumberError && <span className="error">{cardNumberError}</span>}
-          <br></br>
-
-          <label for="expiry-date">Expiry Date:</label>
-          <input type="text" id="expiry-date" name="expiry-date" required value={date} onChange={handleDateChange}></input>
-          {formError && <span className="error">{formError}</span>}<br></br>
-
-          <label for="cvv">CVV:</label>
-          <input type="text" id="cvv" name="cvv" required value={cvv} onChange={handleCVVChange}></input>
-          {formError && <span className="error">{formError}</span>}<br></br>
           </div>
 
 <div style={{textAlign:'center'}}>
-          <input type="button" className='but' value="Order" onClick={() => confirmation()}></input>
+          <input type="button" className='but' value="Get estimate" onClick={() => confirmationCus()}></input>
           <input type="button" className='but' value="Cancel" onClick={() => closePaymentFormWindow()}></input>
          </div>
 
@@ -579,6 +596,47 @@ function closePaymentFormWindow() {
         </button>
       </div>
   </div>  
+}
+
+
+const cusConfirmationView = (cart) => {
+  return <div id="cusconfirmation" className='category-section fixed collapse'>
+      <h3>Thank you for your custom order {name}!</h3>
+      <h3>Shipping Address: {address}, {state}, {zipCode}</h3>
+     
+   
+      <h3>Your estimate will be sent to you through email!</h3>
+      <h3>(Confirmation email sent to {email})</h3>
+      <button type="button" className="but" onClick={() => ret()}>Return</button>
+  </div>
+}
+
+//creator view
+const creatorView = (showCreator) => {
+  return <div id="creator" className='category-section fixed collapse'>
+      <div class="album py-5 bg-light">
+    <div class="container" id="cre">
+      <img id="selfie" src="./myotherimages/selfie.JPEG" alt="picture of creator"></img>
+      <span id="span_cre">
+        <h2>about me...</h2>
+        <p>hi, my name is olivia garcia!</p>
+        <p>i am from illinois, but i currently attend school at iowa state university. in school, i study 
+          women and gender studies, environmental studies, and sustainability. last summer, i 
+          picked up a new passion in crocheting. i love making cute little animals for my friends, 
+          designing new clothing, and the crocheting process in general. i'm glad to be able to express my 
+          creativity in such a fun form!
+        </p>
+        <p>
+          beyond my work, i love spending time with my family and friends, traveling, 
+          hammocking on campus, and listening to my favorite artists, like bad bunny! 
+        </p>
+        <p>thank you for visiting my page and please reach out if you have any questions! :)</p>
+        <p>phone number: 728-382-3283<br></br>email: ogcrochet@gmail.com</p>
+      </span>
+    </div>
+  </div>
+      <button type="button" className="but" onClick={() => ret()}>Return</button>
+  </div>
 }
 
   return (
@@ -620,7 +678,7 @@ function closePaymentFormWindow() {
             <button type="button"  className="but"  onClick={() => openCustomFromWindow()}>
             custom order
             </button>
-            <button type="button"  className="but" >
+            <button type="button"  className="but"  onClick={() => openCreatorWindow()} >
             owner
             </button>
           </div>  }
@@ -632,6 +690,8 @@ function closePaymentFormWindow() {
         {render_products(ProductsCategory)}
         {cartView(cart)}
         {confirmationView(cart)}
+        {cusConfirmationView(cart)}
+        {creatorView(showCreator)}
      
       </div>
 

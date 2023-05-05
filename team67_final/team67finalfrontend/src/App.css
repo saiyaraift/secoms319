@@ -135,7 +135,17 @@ label {
   margin: 1rem 0; 
 }
 
+#span_cre{
+  padding: 10px;
+   text-align: left;
+    font-family: 'Times New Roman', Times, serif
+}
 
+#cre{
+  display: flex;
+   align-items: top;
+    margin-top: 3%
+}
 
 
 
