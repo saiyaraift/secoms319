@@ -431,7 +431,8 @@ function closePaymentFormWindow() {
 
       <div id = "div_c">
         <form id="custom-form">
-          <h3>Custom Order Form</h3>
+          <h3 id="custit">Custom Order Form</h3>
+          <div style={{ display: 'inline-block' }}>
           <div>
               <label for="item"> Item </label>
               <div>
@@ -517,7 +518,9 @@ function closePaymentFormWindow() {
                   class="formbold-form-input"
               ></textarea>
           </div>
+          </div>
 
+<div style={{ display: 'inline-block' }}>
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required value={name} onChange={handleNameChange}></input>
           {formError && <span className="error">{formError}</span>}<br></br>
@@ -558,12 +561,18 @@ function closePaymentFormWindow() {
           <label for="cvv">CVV:</label>
           <input type="text" id="cvv" name="cvv" required value={cvv} onChange={handleCVVChange}></input>
           {formError && <span className="error">{formError}</span>}<br></br>
+          </div>
 
+<div style={{textAlign:'center'}}>
           <input type="button" className='but' value="Order" onClick={() => confirmation()}></input>
           <input type="button" className='but' value="Cancel" onClick={() => closePaymentFormWindow()}></input>
-        </form> 
+         </div>
 
-      </div>
+        </form> 
+        </div>
+
+
+
       <div>
         <button type="button" className="but" onClick={() => renderProducts()}>
           Return

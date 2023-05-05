@@ -126,6 +126,15 @@ label {
 
 }
 
+#custit {
+  color: pink; 
+  font-size: 2rem; 
+  font-family: 'Open Sans', sans-serif; 
+  text-align: center; 
+  text-transform: uppercase; 
+  margin: 1rem 0; 
+}
+
 
 
 
