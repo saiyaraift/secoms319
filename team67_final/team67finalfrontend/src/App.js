@@ -10,6 +10,8 @@ export const App = () => {
   const [ProductsCategory, setProductsCategory] = useState([]);
   const [query, setQuery] = useState('');
 
+  const [showForm, setShowForm] = useState(false);
+
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
@@ -398,6 +400,13 @@ export const App = () => {
     }
   }
 
+  function openCustomFromWindow(){
+    document.getElementById('products').style.visibility = 'collapse'; 
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'visible';
+  }
+
 function closePaymentFormWindow() {
   document.getElementById('div_id').style.visibility = 'hidden';
 }
@@ -411,6 +420,155 @@ function closePaymentFormWindow() {
     });
     setProductsCategory(results);
   }
+
+   // RENDERS THE CUSTOM ORDER PAGE 
+ // UPON RETURN, REFRESHES THE SHOPPING PAGE AND CART
+ const customOrderView = (showForm) => {
+  return <div id="custom" className='category-section fixed collapse'>
+      <div>
+        <form id="custom-form">
+          <h3>Custom Order Form</h3>
+          <div>
+            <label for="item"> Item </label>
+
+            <div>
+              <div>
+                <label>
+                  <input type="radio" name="item" id="item"></input>
+                  Book cover
+                  <span></span>
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input type="radio" name="item`" id="item"></input>
+                  Ornament
+                  <span></span>
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input type="radio" name="item" id="item"></input>
+                    Animal
+                  <span></span>
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <input type="radio" name="item" id="item"></input>
+                  Coaster
+                  <span></span>
+                </label>
+              </div>
+            </div>
+        </div>
+
+     
+  
+          <div>
+              <label for="size"> Size </label>
+  
+              <div>
+                <div>
+                  <label>
+                    <input type="radio" name="size" id="size"></input>
+                    micro (1-2in)
+                    <span></span>
+                  </label>
+                </div>
+  
+                <div>
+                  <label>
+                    <input type="radio" name="size" id="size"></input>
+                    small (2-3in)
+                    <span></span>
+                  </label>
+                </div>
+  
+                <div>
+                  <label>
+                    <input type="radio" name="size" id="size"></input>
+                    regular (4-7in)
+                    <span></span>
+                  </label>
+                </div>
+  
+                <div>
+                  <label>
+                    <input type="radio" name="size" id="size"></input>
+                    large (8-12in)
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+          </div>
+  
+          <div>
+              <label for="message">Specifications (inlcude colors) </label>
+              <textarea
+                  rows="6"
+                  name="message"
+                  id="message"
+                  class="formbold-form-input"
+              ></textarea>
+          </div>
+
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required value={name} onChange={handleNameChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email"  value={email} onChange={handleEmailChange} required></input>
+          {EmailError && <span className="error">{EmailError}</span>}
+          <br></br>
+
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" required value={address} onChange={handleAddressChange}></input>
+          {formError && <span className="error">{formError}</span>}
+          <br></br>
+
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" required value={city} onChange={handleCityChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
+
+          <label for="state">State:</label>
+          <input type="text" id="state" name="state" required value={state} onChange={handleStateChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
+
+          <label for="state">zipCode:</label>
+          <input type="text" id="zipCode" name="zipCode" value={zipCode} onChange={handleZipCodeChange}
+           required></input>
+           {zipCodeError && <span className="error">{zipCodeError}</span>}
+           <br></br>
+
+          <label for="card-number">Card Number:</label>
+          <input type="text" id="card-number" name="card-number" value={cardNumber} onChange={handleCardNumberChange} required></input>
+          {cardNumberError && <span className="error">{cardNumberError}</span>}
+          <br></br>
+
+          <label for="expiry-date">Expiry Date:</label>
+          <input type="text" id="expiry-date" name="expiry-date" required value={date} onChange={handleDateChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
+
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" name="cvv" required value={cvv} onChange={handleCVVChange}></input>
+          {formError && <span className="error">{formError}</span>}<br></br>
+
+          <input type="button" className='but' value="Order" onClick={() => confirmation()}></input>
+          <input type="button" className='but' value="Cancel" onClick={() => closePaymentFormWindow()}></input>
+        </form> 
+
+      </div>
+      <div>
+        <button type="button" className="but" onClick={() => renderProducts()}>
+          Return
+        </button>
+      </div>
+  </div>  
+}
 
   return (
     <div className="flex fixed flex-row">
@@ -448,7 +606,7 @@ function closePaymentFormWindow() {
               onClick={() => handleClickCart(Products)}>
               shop
             </button>
-            <button type="button"  className="but" >
+            <button type="button"  className="but"  onClick={() => openCustomFromWindow()}>
             custom order
             </button>
             <button type="button"  className="but" >
@@ -459,9 +617,11 @@ function closePaymentFormWindow() {
         </div>
       </div>
       <div id='display' className="ml-5 p-10 xl:basis-4/5">
+        {customOrderView(showForm)}
         {render_products(ProductsCategory)}
         {cartView(cart)}
         {confirmationView(cart)}
+     
       </div>
 
 </div>
