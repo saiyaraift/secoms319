@@ -14,6 +14,8 @@ export const App = () => {
   const [showCreator, setCreator] = useState(false);
   const [showAuthor, setAuthor] = useState(false);
   const [deleteProduct, setDeleteProduct] = useState(false);
+  const [updateProduct, setUpdateProduct] = useState(false);
+
 
 
   const [cart, setCart] = useState([]);
@@ -392,6 +394,7 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
   }
 
@@ -405,6 +408,7 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -419,6 +423,7 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -435,6 +440,7 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('confirmation').style.visibility = 'visible';
     }
   }
@@ -450,6 +456,7 @@ export const App = () => {
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('cusconfirmation').style.visibility = 'visible';
     }
   }
@@ -463,6 +470,7 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -472,6 +480,7 @@ export const App = () => {
     document.getElementById('div_c').style.visibility = 'collapse'; 
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
     if(cart.length != 0){
       document.getElementById('div_id').style.visibility = 'visible';
@@ -485,6 +494,7 @@ export const App = () => {
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('custom').style.visibility = 'visible';
     document.getElementById('div_c').style.visibility = 'visible';
   }
@@ -498,6 +508,7 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('creator').style.visibility = 'visible';
   }
 
@@ -510,6 +521,7 @@ export const App = () => {
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('delete').style.visibility = 'collapse'; 
+    document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('author').style.visibility = 'visible';
   }
 
@@ -526,7 +538,21 @@ function renderDelete(){
   document.getElementById('div_c').style.visibility = 'collapse';
   document.getElementById('creator').style.visibility = 'collapse';
   document.getElementById('author').style.visibility = 'collapse';
+  document.getElementById('update').style.visibility = 'collapse'; 
   document.getElementById('delete').style.visibility = 'visible'; 
+}
+
+function renderUpdate(){
+  document.getElementById('products').style.visibility = 'collapse';
+  document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
+  document.getElementById('cart').style.visibility = 'collapse';
+  document.getElementById('div_id').style.visibility = 'collapse';
+  document.getElementById('custom').style.visibility = 'collapse';
+  document.getElementById('div_c').style.visibility = 'collapse';
+  document.getElementById('creator').style.visibility = 'collapse';
+  document.getElementById('author').style.visibility = 'collapse';
+  document.getElementById('delete').style.visibility = 'collapse'; 
+  document.getElementById('update').style.visibility = 'visible'; 
 }
 
 function getOneProduct(id) {
@@ -828,6 +854,84 @@ useEffect(() => {
   getAllProducts();
 }, [checked4]);
 
+
+// UPDATE PRODUCT !!!!
+function updateOneProduct(updateid, updatePrice) {
+  console.log("Product to update :", updateid);
+  fetch("http://localhost:4000/update", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ _id: updateid, price: updatePrice}),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Update a product completed : ", updateid);
+      console.log(data);
+      if (data) {
+        //const keys = Object.keys(data);
+        const value = Object.values(data);
+        alert(value);
+      }
+    });
+    setViewer3(!viewer3);
+}
+
+function getOneProductToUpdate(id) {
+  setIdToUpdate(id); 
+  console.log(id);
+  if (id >= 1 && id <= 20) {
+    fetch("http://localhost:4000/" + id)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Show one product :", id);
+        console.log(data);
+        const dataArr = [];
+        dataArr.push(data);
+        setOneProduct(dataArr);
+      });
+    setViewer3(!viewer3);
+  } else {
+    console.log("Wrong number of Product id.");
+  }
+}
+
+function handleUpdateClick(event){
+  setUpdatedPrice(price); 
+}
+
+const showOneItem = oneProduct.map((el) => (
+  <div key={el._id}>
+    <img src={el.image} style={{ width: 400, height: 450 }}/> <br />
+    Title: {el.title} <br />
+    Category: {el.category} <br />
+    Price: {el.price} <br />
+    Rate :{el.rating.rate} and Count:{el.rating.count} <br />
+  </div>
+));
+
+const updateView = (updateProduct) => {
+  return  <div id="update" className='category-section fixed collapse'>
+  <h2 class="font-bold">Update One Product Price by Id:</h2>
+  <h3 class="font-bold">Enter Id Here</h3>
+  <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProductToUpdate(e.target.value)} />
+  {viewer3 && <div>{showOneItem}</div>}
+
+
+  <h3 class="font-bold">Enter New Price:</h3>
+  <input type="number" id="price" name="price" placeholder="id" value={price} onChange={(e) => setPrice(e.target.value)} />
+  <button type="button" className="but"  onClick={(e) => setUpdatedPrice(price)}>Update</button>
+  <br></br>
+  <button type="button" className="but"  onClick={(e) => updateOneProduct(idToUpdate, price)}>Submit Update</button>
+  <div>
+    <br></br>
+    <button type="button" className="but" onClick={() => handleClickShop()}>Return</button>
+  </div>
+</div>
+}
+
+
+
+
   return (
     <div className="flex fixed flex-row">
       <div className="h-screen bg-red-300 p-3 xl:basis-1/5" style={{ minWidth: '65%' }}>
@@ -881,6 +985,9 @@ useEffect(() => {
             <button type="button"  className="but"  onClick={() => renderDelete()} >
             delete
             </button>
+            <button type="button"  className="but"  onClick={() => renderUpdate()} >
+            update
+            </button>
           </div>  }
 
         </div>
@@ -894,6 +1001,7 @@ useEffect(() => {
         {creatorView(showCreator)}
         {authorView(showAuthor)}
         {deleteView(deleteProduct)}
+        {updateView(updateProduct)}
       </div>
 
 </div>
