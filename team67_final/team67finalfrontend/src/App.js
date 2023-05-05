@@ -657,7 +657,10 @@ const creatorView = (showCreator) => {
 //author page
 const authorView = (showAuthor) => {
   return <div id="author" className='category-section fixed collapse'>
-     <p>Authors: Jade Seiler $ Saiyara Iftekharuzzaman</p>
+     <p>Authors: Jade Seiler & Saiyara Iftekharuzzaman</p>
+     <p>jcseiler@iastate.edu & saiyara@iastate.edu</p>
+     <p>Class: COM S 319</p>
+     <p>Date: May 6th, 2023</p>
      <p>This website's purpose is to supply a platform to sell and share crochet creations</p>
  
       <button type="button" className="but" onClick={() => ret()}>Return</button>
