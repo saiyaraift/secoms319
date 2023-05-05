@@ -13,6 +13,7 @@ export const App = () => {
 
   const [showForm, setShowForm] = useState(false);
   const [showCreator, setCreator] = useState(false);
+  const [showAuthor, setAuthor] = useState(false);
 
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
@@ -372,6 +373,7 @@ export const App = () => {
     document.getElementById('confirmation').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'collapse';
+    document.getElementById('author').style.visibility = 'collapse';
   }
 
   function confirmation(){
@@ -409,6 +411,7 @@ export const App = () => {
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -439,6 +442,17 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'visible';
+  }
+
+  function openAuthorWindow(){
+    document.getElementById('products').style.visibility = 'collapse';
+    document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
+    document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('custom').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('creator').style.visibility = 'collapse';
+    document.getElementById('author').style.visibility = 'visible';
   }
 
 function closePaymentFormWindow() {
@@ -640,12 +654,22 @@ const creatorView = (showCreator) => {
   </div>
 }
 
+//author page
+const authorView = (showAuthor) => {
+  return <div id="author" className='category-section fixed collapse'>
+     <p>Authors: Jade Seiler $ Saiyara Iftekharuzzaman</p>
+     <p>This website's purpose is to supply a platform to sell and share crochet creations</p>
+ 
+      <button type="button" className="but" onClick={() => ret()}>Return</button>
+  </div>
+}
+
   return (
     <div className="flex fixed flex-row">
       <div className="h-screen bg-red-300 p-3 xl:basis-1/5" style={{ minWidth: '65%' }}>
         <img className="w-full" src={logo} alt="Sunset in the mountains" />
         <div className="px-6 py-4">
-             <button type="button"  className="but" >
+             <button type="button"  className="but"  onClick={() => openAuthorWindow()}>
             Website Authors
             </button>
           <div className="py-10">
@@ -693,6 +717,7 @@ const creatorView = (showCreator) => {
         {confirmationView(cart)}
         {cusConfirmationView(cart)}
         {creatorView(showCreator)}
+        {authorView(showAuthor)}
      
       </div>
 
