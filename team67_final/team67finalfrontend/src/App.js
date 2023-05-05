@@ -2,7 +2,6 @@ import logo from './logo.png';
 import selfie from './selfie.JPEG';
 import "./App.css";
 import React, {useState, useEffect} from "react";
-//import {Products} from "./Products"
 import {Categories} from "./Categories"
 
 export const App = () => {
@@ -94,7 +93,7 @@ export const App = () => {
                   </button>
                 </div>
                 <div>
-                  ${product.price} <span class="close">&#10005;</span>{howManyofThis(product.id)}
+                  ${product.price} <span class="close">&#10005;</span>{howManyofThis(product._id)}
                 </div> 
 
               </div>
@@ -108,6 +107,7 @@ export const App = () => {
       </div>
     </div>
   }
+
 
 
   // RENDERS THE CART VIEW ALONG WITH FORM FOR USER TO SUBMIT PAYMENT INFORMATION
@@ -329,7 +329,7 @@ export const App = () => {
   const removeFromCart = (product, index) => {
     console.log("MADE IT WITH REMOVE BUTTON WITH THE PRODUCT" + {product})
     let hardCopy = [...cart];
-    hardCopy = hardCopy.filter((cartItem) => cartItem.id !== product.id);
+    hardCopy = hardCopy.filter((cartItem) => cartItem._id !== product._id);
     setCart(hardCopy);
   };
 
@@ -346,7 +346,8 @@ export const App = () => {
   };
 
   function howManyofThis(id) {
-    let hmot = cart.filter((cartItem) => cartItem.id === id);
+    console.log("HOW MANY OF THIS: " + id); 
+    let hmot = cart.filter((cartItem) => cartItem._id === id);
     return hmot.length;
   }
 
@@ -430,6 +431,7 @@ export const App = () => {
     document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'visible';
     document.getElementById('div_c').style.visibility = 'visible';
   }
@@ -438,6 +440,7 @@ export const App = () => {
     document.getElementById('products').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'collapse';
+    document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
@@ -631,7 +634,7 @@ const creatorView = (showCreator) => {
   return <div id="creator" className='category-section fixed collapse'>
       <div class="album py-5 bg-light">
     <div class="container" id="cre">
-      <img class = "imgf" id="selfie" src={selfie} alt="picture of creator"></img>
+      <img class = "imgf h-auto max-w-full rounded-lg" id="selfie" src={selfie} alt="picture of creator"></img>
       <span id="span_cre">
         <h2>about me...</h2>
         <p>hi, my name is olivia garcia!</p>
