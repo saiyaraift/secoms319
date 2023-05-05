@@ -13,6 +13,8 @@ export const App = () => {
   const [showForm, setShowForm] = useState(false);
   const [showCreator, setCreator] = useState(false);
   const [showAuthor, setAuthor] = useState(false);
+  const [deleteProduct, setDeleteProduct] = useState(false);
+
 
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
@@ -35,6 +37,23 @@ export const App = () => {
 
   const [formError, setFormError] = useState('');
 
+
+  // FROM ASSIGNMENT 3
+  const [product, setProduct] = useState([]);
+  const [viewer1, setViewer1] = useState(false);
+
+  const [oneProduct, setOneProduct] = useState([]);
+  const [viewer2, setViewer2] = useState(false);
+
+  const [price, setPrice] = useState(0); 
+  const [updatedPrice, setUpdatedPrice] = useState(price); 
+  const [idToUpdate, setIdToUpdate] = useState(0); 
+  const [viewer3, setViewer3] = useState(false);
+
+  const [viewer4, setViewer4] = useState(false);
+  const [checked4, setChecked4] = useState(false);
+  const [index, setIndex] = useState(0);
+
   // RENDERS THE SHOPPING/PRODUCTS PAGE WHERE USERS CAN SEARCH BY NAME OR CATEGORY
   // UPON CHECKOUT, THIS IS VIEW IS COLLAPSED AND THE CART VIEW IS OPENED
   function getAllProducts() {
@@ -45,6 +64,7 @@ export const App = () => {
         console.log(data);
         setProductsCategory(data);
         setProducts(data); 
+        setProduct(data);
       });
   }
   
@@ -371,6 +391,7 @@ export const App = () => {
     document.getElementById('author').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
   }
 
@@ -383,6 +404,7 @@ export const App = () => {
     document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -396,6 +418,7 @@ export const App = () => {
     document.getElementById('creator').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -411,6 +434,7 @@ export const App = () => {
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('confirmation').style.visibility = 'visible';
     }
   }
@@ -425,6 +449,7 @@ export const App = () => {
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('cusconfirmation').style.visibility = 'visible';
     }
   }
@@ -437,6 +462,7 @@ export const App = () => {
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -445,6 +471,7 @@ export const App = () => {
     document.getElementById('cusconfirmation').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse'; 
     document.getElementById('custom').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
     if(cart.length != 0){
       document.getElementById('div_id').style.visibility = 'visible';
@@ -457,6 +484,7 @@ export const App = () => {
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('custom').style.visibility = 'visible';
     document.getElementById('div_c').style.visibility = 'visible';
   }
@@ -469,6 +497,7 @@ export const App = () => {
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('creator').style.visibility = 'visible';
   }
 
@@ -480,12 +509,45 @@ export const App = () => {
     document.getElementById('custom').style.visibility = 'collapse';
     document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'collapse';
+    document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('author').style.visibility = 'visible';
   }
 
 function closePaymentFormWindow() {
   document.getElementById('div_id').style.visibility = 'hidden';
 }
+
+function renderDelete(){
+  document.getElementById('products').style.visibility = 'collapse';
+  document.getElementById('cusconfirmation').style.visibility = 'collapse'; 
+  document.getElementById('cart').style.visibility = 'collapse';
+  document.getElementById('div_id').style.visibility = 'collapse';
+  document.getElementById('custom').style.visibility = 'collapse';
+  document.getElementById('div_c').style.visibility = 'collapse';
+  document.getElementById('creator').style.visibility = 'collapse';
+  document.getElementById('author').style.visibility = 'collapse';
+  document.getElementById('delete').style.visibility = 'visible'; 
+}
+
+function getOneProduct(id) {
+  console.log(id);
+  if (id >= 1 && id <= 20) {
+    fetch("http://localhost:4000/" + id)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Show one product :", id);
+        console.log(data);
+        const dataArr = [];
+        dataArr.push(data);
+        setOneProduct(dataArr);
+      });
+    setViewer2(!viewer2);
+  } else {
+    console.log("Wrong number of Product id.");
+  }
+}
+  
+
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -695,6 +757,77 @@ const authorView = (showAuthor) => {
   </div>
 }
 
+// DELETE PRODUCT!!!!
+function getOneByOneProductNext() {
+  if (product.length > 0) {
+    if (index === product.length - 1) setIndex(0);
+    else setIndex(index + 1);
+    if (product.length > 0) setViewer4(true);
+    else setViewer4(false);
+  }
+}
+
+function getOneByOneProductPrev() {
+  if (product.length > 0) {
+    if (index === 0) setIndex(product.length - 1);
+    else setIndex(index - 1);
+    if (product.length > 0) setViewer4(true);
+    else setViewer4(false);
+  }
+}
+
+function deleteOneProduct(deleteid) {
+  console.log("Product to delete :", deleteid);
+  fetch("http://localhost:4000/delete/", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ _id: deleteid }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Delete a product completed : ", deleteid);
+      console.log(data);
+      if (data) {
+        //const keys = Object.keys(data);
+        const value = Object.values(data);
+        alert(value);
+      }
+    });
+  }
+
+const deleteView = (deleteProduct) => {
+  return  <div id="delete" className='category-section fixed collapse'>
+  <h3 class="font-bold">Delete One Product:</h3>
+  <input type="checkbox" id="acceptdelete" name="acceptdelete" checked={checked4}
+    onChange={(e) => setChecked4(!checked4)} style={{width: 25, height: 25 }} />
+  <button type="button" className="but" onClick={() => getOneByOneProductPrev()}>Prev</button>
+  <button type="button" className="but"  onClick={() => getOneByOneProductNext()}>Next</button>
+  <button type="button" className="but" onClick={() => deleteOneProduct(product[index]._id)}>Delete</button>
+  {checked4 && (
+    <div key={product[index]._id}>
+      <img src={product[index].image}  style={{ width: 600, height: 650 }} /> <br />
+      Id:{product[index]._id} <br />
+      Title: {product[index].title} <br />
+      Category: {product[index].category} <br />
+      Price: {product[index].price} <br />
+      Rate :{product[index].rating.rate} and Count:
+      {product[index].rating.count} <br />
+    </div>
+  )}
+  <div>
+    <br></br>
+  </div>
+  <div>
+    <button type="button" className="but" onClick={() => handleClickShop()}>Return</button>
+  </div>
+</div>
+
+}
+
+useEffect(() => {
+  getAllProducts();
+}, [checked4]);
+
   return (
     <div className="flex fixed flex-row">
       <div className="h-screen bg-red-300 p-3 xl:basis-1/5" style={{ minWidth: '65%' }}>
@@ -723,6 +856,7 @@ const authorView = (showAuthor) => {
           </div>
 {
           <div>
+            <h2>Customer Services: </h2>
             <button type="button" className="but"
               onClick={() => handleClickCart(cart)}>
               cart
@@ -737,6 +871,16 @@ const authorView = (showAuthor) => {
             <button type="button"  className="but"  onClick={() => openCreatorWindow()} >
             owner
             </button>
+            <div>
+              <br></br>
+            </div>
+            <h2>Company Services: </h2>
+            {/* <button type="button"  className="but"  onClick={() => } >
+            update
+            </button> */}
+            <button type="button"  className="but"  onClick={() => renderDelete()} >
+            delete
+            </button>
           </div>  }
 
         </div>
@@ -749,7 +893,7 @@ const authorView = (showAuthor) => {
         {cusConfirmationView(cart)}
         {creatorView(showCreator)}
         {authorView(showAuthor)}
-     
+        {deleteView(deleteProduct)}
       </div>
 
 </div>
