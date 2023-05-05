@@ -16,6 +16,7 @@ export const App = () => {
   const [deleteProduct, setDeleteProduct] = useState(false);
   const [updateProduct, setUpdateProduct] = useState(false);
   const [createProduct, setCreateProduct] = useState(false);
+  const [readProduct, setReadProduct] = useState(false);
   
 
 
@@ -398,6 +399,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('cart').style.visibility = 'visible';
   }
 
@@ -413,6 +415,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -429,6 +432,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -447,6 +451,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'visible';
     }
   }
@@ -464,6 +469,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('cusconfirmation').style.visibility = 'visible';
     }
   }
@@ -479,6 +485,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'visible';
   }
 
@@ -490,6 +497,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('cart').style.visibility = 'visible';
     if(cart.length != 0){
       document.getElementById('div_id').style.visibility = 'visible';
@@ -505,6 +513,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'visible';
     document.getElementById('div_c').style.visibility = 'visible';
   }
@@ -520,6 +529,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('creator').style.visibility = 'visible';
   }
 
@@ -534,6 +544,7 @@ export const App = () => {
     document.getElementById('delete').style.visibility = 'collapse'; 
     document.getElementById('update').style.visibility = 'collapse'; 
     document.getElementById('create').style.visibility = 'collapse'; 
+    document.getElementById('products2').style.visibility = 'collapse';
     document.getElementById('author').style.visibility = 'visible';
   }
 
@@ -552,6 +563,7 @@ function renderDelete(){
   document.getElementById('author').style.visibility = 'collapse';
   document.getElementById('update').style.visibility = 'collapse'; 
   document.getElementById('create').style.visibility = 'collapse'; 
+  document.getElementById('products2').style.visibility = 'collapse';
   document.getElementById('delete').style.visibility = 'visible'; 
 }
 
@@ -566,6 +578,7 @@ function renderUpdate(){
   document.getElementById('author').style.visibility = 'collapse';
   document.getElementById('delete').style.visibility = 'collapse'; 
   document.getElementById('create').style.visibility = 'collapse'; 
+  document.getElementById('products2').style.visibility = 'collapse';
   document.getElementById('update').style.visibility = 'visible'; 
 }
 
@@ -580,8 +593,25 @@ function renderCreate(){
   document.getElementById('author').style.visibility = 'collapse';
   document.getElementById('delete').style.visibility = 'collapse'; 
   document.getElementById('update').style.visibility = 'collapse'; 
+  document.getElementById('products2').style.visibility = 'collapse';
   document.getElementById('create').style.visibility = 'visible'; 
 }
+
+function renderProducts2(){
+  document.getElementById('cart').style.visibility = 'collapse';
+  document.getElementById('confirmation').style.visibility = 'collapse';
+  document.getElementById('cusconfirmation').style.visibility = 'collapse';
+  document.getElementById('div_id').style.visibility = 'collapse';
+  document.getElementById('div_c').style.visibility = 'collapse';
+  document.getElementById('custom').style.visibility = 'collapse';
+  document.getElementById('author').style.visibility = 'collapse';
+  document.getElementById('delete').style.visibility = 'collapse'; 
+  document.getElementById('update').style.visibility = 'collapse'; 
+  document.getElementById('create').style.visibility = 'collapse'; 
+  document.getElementById('products').style.visibility = 'collapse';
+  document.getElementById('products2').style.visibility = 'visible';
+}
+
 
 function getOneProduct(id) {
   console.log(id);
@@ -1083,6 +1113,51 @@ const createView = (createProduct) => {
 
 
 
+const render_products2 = (ProductsCategory) => {
+  return <div id="products2" className='category-section fixed collapse'>
+    <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">Products ({ProductsCategory.length})</h2>
+    <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10" style={{
+      maxHeight: '800px', overflowY:
+        'scroll'
+    }}>
+      {/* Loop Products */}
+      {ProductsCategory.map((product, index) => (
+        <div key={index} className="group relative shadow-lg pointer-events-none" >
+          <div className=" min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
+            <img
+              alt="Product Image"
+              src={product.image}
+              className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+            />
+          </div>
+          <div className="flex justify-between p-3">
+            <div>
+              <h3 className="text-sm text-gray-700">
+                <a href={product.href}>
+                  <span aria-hidden="true" className="absolute inset-0" />
+                  <span style={{ fontSize: '16px', fontWeight: '600' }}>{product.title}</span>
+                </a>
+                <p>Tag - {product.category}</p>
+              </h3>
+              <p className="mt-1 text-sm text-gray-500">Rating: {product.rating.rate}</p>
+              <p>{product.description}</p>
+              <div>
+                ${product.price} <span class="close">&#10005;</span>{howManyofThis(product._id)}
+              </div> 
+
+            </div>
+            <p className="text-sm font-medium text-green-600">${product.price}</p>
+          </div>
+        </div>
+      ))}
+    </div >
+    <div>
+    <button type="button" className="but" onClick={() => handleClickShop()}>Return</button>
+  </div>
+  </div>
+}
+
+
   return (
     <div className="flex fixed flex-row">
       <div className="h-screen bg-red-300 p-3 xl:basis-1/5" style={{ minWidth: '65%' }}>
@@ -1136,6 +1211,9 @@ const createView = (createProduct) => {
             <button type="button"  className="but"  onClick={() => renderCreate()} >
             create
             </button>
+            <button type="button"  className="but"  onClick={() => renderProducts2()} >
+            read
+            </button>
             <button type="button"  className="but"  onClick={() => renderDelete()} >
             delete
             </button>
@@ -1157,6 +1235,7 @@ const createView = (createProduct) => {
         {deleteView(deleteProduct)}
         {updateView(updateProduct)}
         {createView(createProduct)}
+        {render_products2(ProductsCategory)}
       </div>
 
 </div>
