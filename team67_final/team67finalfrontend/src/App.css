@@ -114,6 +114,15 @@ label {
   padding: 20px;
   background-color: #f2f2f2;
   border-radius: 5px;
+  overflow: scroll;
+
+}
+
+#form_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 
 }
 

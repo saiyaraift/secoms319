@@ -366,7 +366,7 @@ export const App = () => {
     setCart([]);
     document.getElementById('products').style.visibility = 'visible';
     document.getElementById('cart').style.visibility = 'collapse';
-    //document.getElementById('div_c').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'collapse';
   }
 
@@ -389,11 +389,13 @@ export const App = () => {
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('confirmation').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse';
     document.getElementById('products').style.visibility = 'visible';
   }
 
   function openPaymentFormWindow() {
-    document.getElementById('products').style.visibility = 'collapse'; 
+    document.getElementById('products').style.visibility = 'collapse';
+    document.getElementById('div_c').style.visibility = 'collapse'; 
     document.getElementById('cart').style.visibility = 'visible';
     if(cart.length != 0){
       document.getElementById('div_id').style.visibility = 'visible';
@@ -405,6 +407,7 @@ export const App = () => {
     document.getElementById('cart').style.visibility = 'collapse';
     document.getElementById('div_id').style.visibility = 'collapse';
     document.getElementById('custom').style.visibility = 'visible';
+    document.getElementById('div_c').style.visibility = 'visible';
   }
 
 function closePaymentFormWindow() {
@@ -425,56 +428,55 @@ function closePaymentFormWindow() {
  // UPON RETURN, REFRESHES THE SHOPPING PAGE AND CART
  const customOrderView = (showForm) => {
   return <div id="custom" className='category-section fixed collapse'>
-      <div>
+
+      <div id = "div_c">
         <form id="custom-form">
           <h3>Custom Order Form</h3>
           <div>
-            <label for="item"> Item </label>
-
-            <div>
+              <label for="item"> Item </label>
               <div>
-                <label>
-                  <input type="radio" name="item" id="item"></input>
-                  Book cover
-                  <span></span>
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  <input type="radio" name="item`" id="item"></input>
-                  Ornament
-                  <span></span>
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  <input type="radio" name="item" id="item"></input>
+                <div>
+                  <label>
+                    <input type="radio" name="item" id="item" required></input>
+                    Ornament
+                    <span></span>
+                  </label>
+                </div>
+  
+                <div>
+                  <label>
+                    <input type="radio" name="item" id="item"></input>
+                    Book Cover
+                    <span></span>
+                  </label>
+                </div>
+  
+                <div>
+                  <label>
+                    <input type="radio" name="item" id="item"></input>
                     Animal
-                  <span></span>
-                </label>
+                    <span></span>
+                  </label>
+                </div>
+  
+                <div>
+                  <label>
+                    <input type="radio" name="item" id="item"></input>
+                    Coaster
+                    <span></span>
+                  </label>
+                </div>
               </div>
-
-              <div>
-                <label>
-                  <input type="radio" name="item" id="item"></input>
-                  Coaster
-                  <span></span>
-                </label>
-              </div>
-            </div>
-        </div>
+          </div>
 
      
   
           <div>
               <label for="size"> Size </label>
-  
               <div>
                 <div>
                   <label>
-                    <input type="radio" name="size" id="size"></input>
+                    <input type="radio" name="size" id="size" required></input>
                     micro (1-2in)
                     <span></span>
                   </label>
@@ -507,7 +509,7 @@ function closePaymentFormWindow() {
           </div>
   
           <div>
-              <label for="message">Specifications (inlcude colors) </label>
+              <label for="message">Specifications (inlcude colors): </label>
               <textarea
                   rows="6"
                   name="message"
