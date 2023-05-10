@@ -1,3 +1,4 @@
+// ONLY TO KEEP TRACK OF OUR DATA NOT ACTUALLY USED IN THE PROJECT
 // export const Products = [
 //     {
 //       "_id": 1,
