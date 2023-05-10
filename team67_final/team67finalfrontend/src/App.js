@@ -977,7 +977,7 @@ const updateView = (updateProduct) => {
 
 
   <h3 class="font-bold">Enter New Price:</h3>
-  <input type="number" id="price" name="price" placeholder="id" value={price} onChange={(e) => setPrice(e.target.value)} />
+  <input type="number" id="price" name="price" placeholder="price" value={price} onChange={(e) => setPrice(e.target.value)} />
   <button type="button" className="but"  onClick={(e) => setUpdatedPrice(price)}>Update</button>
   <br></br>
   <button type="button" className="but"  onClick={(e) => updateOneProduct(idToUpdate, price)}>Submit Update</button>
