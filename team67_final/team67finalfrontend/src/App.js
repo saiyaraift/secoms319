@@ -649,7 +649,7 @@ function getOneProduct(id) {
   return <div id="custom" className='category-section fixed collapse'>
 
       <div id = "div_c">
-        <form id="custom-form">
+        <form id="custom-form" action = "mailto:saiyara@iastate.edu" method = "post">
           <h3 id="custit">Custom Order Form</h3>
           <div style={{ display: 'inline-block' }}>
           <div>
