@@ -650,7 +650,7 @@ function getOneProduct(id) {
   return <div id="custom" className='category-section fixed collapse'>
 
       <div id = "div_c">
-        <form id="custom-form" action = "mailto:saiyara@iastate.edu" method = "post">
+        <form id="custom-form" action="https://formsubmit.co/saiyara.iftekharuzzaman@gmail.com" method="POST">
           <h3 id="custit">Custom Order Form</h3>
           <div style={{ display: 'inline-block' }}>
           <div>
@@ -771,7 +771,7 @@ function getOneProduct(id) {
           </div>
 
 <div style={{textAlign:'center'}}>
-          <input type="button" className='but' value="Get estimate" onClick={() => confirmationCus()}></input>
+          <input type="submit" className='but' value="Get estimate" onClick={() => confirmationCus()}></input>
           <input type="button" className='but' value="Cancel" onClick={() => closePaymentFormWindow()}></input>
          </div>
 
