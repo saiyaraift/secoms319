@@ -42,6 +42,7 @@ export const App = () => {
 
   const [formError, setFormError] = useState('');
 
+  const refresh = () => window.location.reload(true)
 
   // FROM ASSIGNMENT 3
   const [product, setProduct] = useState([]);
@@ -1220,8 +1221,11 @@ const render_products2 = (ProductsCategory) => {
             <button type="button"  className="but"  onClick={() => renderUpdate()} >
             update
             </button>
+            <div></div>
+            <button type="button"  className="but" style={{margin: 10}} onClick={() => refresh()} >
+            refresh
+            </button>
           </div>  }
-
         </div>
       </div>
       <div id='display' className="ml-5 p-10 xl:basis-4/5">
